@@ -1,0 +1,20 @@
+{
+    "name": "humongous-style-game",
+    "image": "mcr.microsoft.com/devcontainers/typescript-node:22",
+    "features": {
+        "ghcr.io/devcontainers/features/python:1": { "version": "3.12", "installTools": false }
+    },
+    "postCreateCommand": "npm ci && pip install --user pillow",
+    "postAttachCommand": {
+        "dev-server": "npm run dev"
+    },
+    "forwardPorts": [5173],
+    "portsAttributes": {
+        "5173": { "label": "Game", "onAutoForward": "openPreview" }
+    },
+    "customizations": {
+        "codespaces": {
+            "openFiles": ["README.md", "src/game/rooms/Pond.ts"]
+        }
+    }
+}
