@@ -1,0 +1,69 @@
+{
+  "characters": {
+    "fizz": {
+      "frames": {
+        "closed": "characters/fizz/fizz-closed.png",
+        "half": "characters/fizz/fizz-half.png",
+        "wide": "characters/fizz/fizz-wide.png"
+      },
+      "width": 519,
+      "height": 768,
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      }
+    },
+    "moss": {
+      "frames": {
+        "closed": "characters/moss/moss-closed.png",
+        "half": "characters/moss/moss-half.png",
+        "wide": "characters/moss/moss-wide.png"
+      },
+      "width": 419,
+      "height": 768,
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      }
+    },
+    "okafor": {
+      "frames": {
+        "closed": "characters/okafor/okafor-closed.png",
+        "half": "characters/okafor/okafor-half.png",
+        "wide": "characters/okafor/okafor-wide.png"
+      },
+      "width": 427,
+      "height": 768,
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      }
+    },
+    "quill": {
+      "frames": {
+        "closed": "characters/quill/quill-closed.png",
+        "half": "characters/quill/quill-half.png",
+        "wide": "characters/quill/quill-wide.png"
+      },
+      "width": 474,
+      "height": 768,
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      }
+    },
+    "tug": {
+      "frames": {
+        "closed": "characters/tug/tug-closed.png",
+        "half": "characters/tug/tug-half.png",
+        "wide": "characters/tug/tug-wide.png"
+      },
+      "width": 607,
+      "height": 767,
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      }
+    }
+  }
+}
