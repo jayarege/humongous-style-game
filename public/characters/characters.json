@@ -77,6 +77,19 @@
         "x": 0.5,
         "y": 1.0
       }
+    },
+    "barnaby": {
+      "frames": {
+        "closed": "characters/barnaby/barnaby-closed.png",
+        "half": "characters/barnaby/barnaby-closed.png",
+        "wide": "characters/barnaby/barnaby-closed.png"
+      },
+      "width": 512,
+      "height": 768,
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      }
     }
   }
 }
