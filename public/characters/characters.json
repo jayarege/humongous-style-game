@@ -64,6 +64,19 @@
         "x": 0.5,
         "y": 1.0
       }
+    },
+    "wren": {
+      "frames": {
+        "closed": "characters/wren/wren-closed.png",
+        "half": "characters/wren/wren-closed.png",
+        "wide": "characters/wren/wren-closed.png"
+      },
+      "width": 481,
+      "height": 768,
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      }
     }
   }
 }
