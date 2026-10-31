@@ -16,6 +16,8 @@ export interface SpeakerDef {
     mouths?: Record<MouthState, string>;
     /** Typing speed in characters per second (default 38). Slower for big, slow characters. */
     cps?: number;
+    /** For characters with only one frame: bob up and down while the line is typing, instead of flapping a mouth. */
+    bob?: boolean;
 }
 
 /** One line of a conversation: [speaker id, text]. */
@@ -98,11 +100,27 @@ function playLine(scene: Phaser.Scene, box: TextBox, speakerId: string, text: st
     const start = scene.time.now;
     let typed = false;
 
+    // Characters with a single frame bob gently while they talk.
+    let bobTween: Phaser.Tweens.Tween | null = null;
+    let bobBase = 0;
+    const bobSprite = def.bob && getSprite ? getSprite() : undefined;
+    if (bobSprite && bobSprite.active) {
+        bobBase = bobSprite.scaleY;
+        bobTween = scene.tweens.add({ targets: bobSprite, scaleY: bobBase * 1.035, duration: 120, yoyo: true, repeat: -1 });
+    }
+    const stopBob = () => {
+        if (!bobTween) return;
+        bobTween.stop();
+        bobTween = null;
+        if (bobSprite && bobSprite.active) bobSprite.setScale(bobSprite.scaleX, bobBase);
+    };
+
     return new Promise<boolean>((resolve) => {
         const finishTyping = () => {
             typed = true;
             box.reveal(timing.text.length);
             setMouth("closed");
+            stopBob();
             box.showContinue(true);
         };
         const onUpdate = () => {
@@ -118,6 +136,7 @@ function playLine(scene: Phaser.Scene, box: TextBox, speakerId: string, text: st
             box.onAdvance(null);
             box.showContinue(false);
             setMouth("closed");
+            stopBob();
         };
         const onShutdown = () => {
             cleanup();

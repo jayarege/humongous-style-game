@@ -1,4 +1,4 @@
-# humongous-style-game
+# Casebound (humongous-style-game)
 
 A Humongous-style point-and-click adventure (think Putt-Putt, Freddi Fish, Pajama Sam, Spy Fox) that runs in the
 browser. TypeScript + Vite + Phaser 3, on a vendored copy of the [Caper](https://github.com/gandazgul/caper) engine.
@@ -20,19 +20,20 @@ npm test           # lip flap unit tests
 npm run build      # type check + production build into dist/
 ```
 
-## Playing the demo
+## Playing Casebound
 
-Mayor Croaksworth lost his lucky marble. Talk to him, go left to the meadow, pick up the marble, bring it back.
+Wren falls asleep over her casebooks and wakes up in the Undercase, a city where every unsolved case is a district.
+Warm up with the Vending Oracle in the lobby, crack the eight district cases, then face the Blank Page.
 
-- Click the floor to walk, click things to use or talk to them.
-- In a conversation: click (or Space / Enter) to finish the line, click again for the next one.
-- **Start over** in the top bar wipes the save.
+- Click characters and objects to talk to them. Click (or Space / Enter) to advance dialogue.
+- Each case runs the same seven beats: hear the prompt, lock the objective, spend 3 Question Lanterns, build the
+  board, plant the flag, drive the case, close. Wrong picks get coaching and a retry; the Hint button helps for half a star.
+- Extras: a hidden Framework Card in every area, Exhibit A's Driver Detective mystery after each case, and the doors'
+  Case Quiz once four districts are cleared.
+- **Shift+U** on the map unlocks everything, for testing. **Start over** in the top bar wipes the save.
+- Test mode: add `?auto` to the URL and every choice is picked at random and logged to `window.__cbLog`.
 
-**Developer keys (in game):**
-
-- **Shift+D**: show walkable areas, hotspots and approach points.
-- **Shift+E**: scene editor. Drag walkable-area corners, hotspots and approach points, then press **W** (walkable),
-  **P** (props) to copy the new numbers to the clipboard and paste them into the room file.
+The full script is in `docs/casebound-case-framework-script.md`; the game's content lives in `src/casebound/content/`.
 
 ## Where things live
 
@@ -43,7 +44,9 @@ public/art/              all images. Replace a PNG with one of the same name to 
   items/                 inventory items
   ui/                    inventory bar and thought bubble
 src/
-  main.ts                boots the game, lists the rooms
+  main.ts                boots Casebound
+  casebound/             the game: content (cases, places, minigames), case loop, scenes, save, UI
+                         (game/ and rooms/ below hold the original Pond / Meadow demo, kept as engine examples)
   game/assets.ts         every image and its texture key
   game/characters.ts     who talks: name, name-tag colour, mouth frames, typing speed
   game/state.ts          the save-game flags (metMayor, hasMarble, ...)

@@ -38,12 +38,12 @@ Every client is built around one comic trait, and that trait is the trap their c
 | The Blank Page | Skyline | Final encounter | Terrified of being filled with a bad framework | Fear of the blank page is solved by a first good bucket |
 | Barnaby Bunch | Margin Market | Grocery chain owner | Blames everything on the weather | Find where the decline is concentrated before naming a cause |
 | Dr. Helga Sprocket | The Border Docks | Medical device maker | Already packed her suitcases | A big market is not the same as being able to win it |
-| Captain Fen Sterling | Runway Row | Airline pricing chief | Flips a coin for every decision | Price moves need elasticity and competitor response |
-| Juniper Sprout | The Greenhouse | SaaS founder | Says yes to every idea | Rank growth options by size, feasibility, fit |
+| Tug | Runway Row | Airline pricing chief | Flips a coin for every decision | Price moves need elasticity and competitor response |
+| Quill | The Greenhouse | SaaS founder | Says yes to every idea | Rank growth options by size, feasibility, fit |
 | Duke Mergeworth | The Auction Hall | Conglomerate CEO | Wants to buy anything shiny | Synergies must beat the premium paid |
-| Vera Multiple | The Vault | PE partner | Only ever asks "what's the exit?" | Standalone value, no buyer synergies |
-| Professor Tally | Abacus Heights | Statistician | Refuses to round anything | Round early, state assumptions, sanity check |
-| Foreman Rook | The Foundry | Aerospace fittings plant manager | Wants to cut the biggest cost, always | The biggest bucket is not always the most addressable |
+| Okafor | The Vault | PE partner | Only ever asks "what's the exit?" | Standalone value, no buyer synergies |
+| Moss | Abacus Heights | Statistician | Refuses to round anything | Round early, state assumptions, sanity check |
+| Fizz | The Foundry | Aerospace fittings plant manager | Wants to cut the biggest cost, always | The biggest bucket is not always the most addressable |
 
 **Clickpoint regulars** (no case, just reactions):
 
@@ -333,13 +333,13 @@ The trap is treating price as a coin flip: the player has to weigh cost floor, c
 
 **Hear the Prompt**
 
-*A runway lit by blinking lights. Captain Fen Sterling flips a silver coin and catches it without looking.*
+*A runway lit by blinking lights. Tug flips a silver coin and catches it without looking.*
 
-**FEN:** Heads, we raise prices 5%. Tails, we raise them anyway. I'd still like a second opinion.
+**TUG:** Heads, we raise prices 5%. Tails, we raise them anyway. I'd still like a second opinion.
 
 **WREN:** What happens if it lands on its edge?
 
-**FEN:** Then I'd need a consultant. Which is why you're here.
+**TUG:** Then I'd need a consultant. Which is why you're here.
 
 **Lock the Objective.** Correct: "Decide whether a 5% fare increase raises profit on these routes over the next year." Decoy tile "raise revenue" triggers Gus: "Revenue isn't the goal if we lose half the passengers."
 
@@ -377,11 +377,11 @@ The trap is treating price as a coin flip: the player has to weigh cost floor, c
 
 **WREN:** Raise fares, but only where business travelers dominate. Business demand barely moves for a 5% increase and costs are fixed, so that's nearly pure profit. Leisure demand drops 10%, so hold leisure fares. The risk is a competitor undercutting us, so next step is watching their fares for two weeks after launch.
 
-**FEN:** *Pockets the coin.* I'll keep this for emergencies.
+**TUG:** *Pockets the coin.* I'll keep this for emergencies.
 
 **Hint ladder**
 
-1. "Revenue isn't profit. What does Fen actually want?"
+1. "Revenue isn't profit. What does Tug actually want?"
 2. "I'm treating all passengers like one group."
 3. "How does demand respond, by segment? That's my first bucket."
 
@@ -404,15 +404,15 @@ The trap is a list of ideas with no ranking: the player must sort options into c
 
 **Hear the Prompt**
 
-*A glass greenhouse where every pot holds a sprouting idea. Juniper Sprout waters all of them at once.*
+*A glass greenhouse where every pot holds a sprouting idea. Quill waters all of them at once.*
 
-**JUNIPER:** We need to double revenue in four years. Should we do AI? Yes. Europe? Yes. Dog food? Probably yes!
+**QUILL:** We need to double revenue in four years. Should we do AI? Yes. Europe? Yes. Dog food? Probably yes!
 
 **WREN:** You sell scheduling software.
 
-**JUNIPER:** Dogs have schedules!
+**QUILL:** Dogs have schedules!
 
-**Lock the Objective.** Correct: "Find the growth options that double revenue in four years, ranked by size and feasibility." Decoy tile "try everything" triggers Juniper: "Yes! Finally!" and Gus quietly erases it.
+**Lock the Objective.** Correct: "Find the growth options that double revenue in four years, ranked by size and feasibility." Decoy tile "try everything" triggers Quill: "Yes! Finally!" and Gus quietly erases it.
 
 **Spend Lanterns**
 
@@ -430,7 +430,7 @@ The trap is a list of ideas with no ranking: the player must sort options into c
 | Bucket card | Status | Correct sub-points (A / B) | Decoy sub-points |
 | --- | --- | --- | --- |
 | How much more can the core deliver? | Critical | A: expansion revenue, pricing and packaging, churn reduction. B: traffic, ticket size, menu and daypart | "Do more" |
-| Which adjacent moves are biggest? | Critical | A: new verticals (clinics, field service), mid-market. B: grocery packaged coffee, catering, new metros | "Dog food" (Juniper protests) |
+| Which adjacent moves are biggest? | Critical | A: new verticals (clinics, field service), mid-market. B: grocery packaged coffee, catering, new metros | "Dog food" (Quill protests) |
 | Are there new businesses worth it? | Critical | A: payments add-on, partnerships. B: franchising, licensing | "AI" alone, no use case |
 | How do we rank and fund them? | Critical | Size vs target gap, feasibility, fit with capabilities, time to impact | "Pick the fun ones" |
 | Growth | Decoy, label only | | |
@@ -448,13 +448,13 @@ The trap is a list of ideas with no ranking: the player must sort options into c
 
 **WREN:** Grow the core first. Customers on three or more modules expand 25% a year, and only 30% are there today, so cross-selling closes about half the gap. Add one adjacent vertical, field service, for the rest. The risk is a small sales team, so next step is hiring customer success managers before expanding into new verticals.
 
-**JUNIPER:** And the dog food?
+**QUILL:** And the dog food?
 
 **WREN:** Year five. Maybe.
 
 **Hint ladder**
 
-1. "Juniper has a lot of ideas and no ranking."
+1. "Quill has a lot of ideas and no ranking."
 2. "Some ideas are core, some are adjacent, some are brand new."
 3. "Which bucket gets us closest to double? That's where to start."
 
@@ -550,15 +550,15 @@ The trap is reusing the M&A board: a PE buyer has no synergies, so value comes f
 
 **Hear the Prompt**
 
-*A bank vault with a single desk. Vera Multiple does not look up from her spreadsheet.*
+*A bank vault with a single desk. Okafor does not look up from the spreadsheet.*
 
-**VERA:** We're looking at buying this company. What's the exit?
+**OKAFOR:** We're looking at buying this company. What's the exit?
 
 **WREN:** We haven't bought it yet.
 
-**VERA:** That's never stopped me from asking.
+**OKAFOR:** That's never stopped me from asking.
 
-**Lock the Objective.** Correct: "Decide whether to buy at 10x EBITDA and whether it can return about 2.5x over five years." If the player picks a synergies tile, Vera finally looks up: "Whose synergies? We're a fund."
+**Lock the Objective.** Correct: "Decide whether to buy at 10x EBITDA and whether it can return about 2.5x over five years." If the player picks a synergies tile, Okafor finally looks up: "Whose synergies? We're a fund."
 
 **Spend Lanterns**
 
@@ -567,7 +567,7 @@ The trap is reusing the M&A board: a PE buyer has no synergies, so value comes f
 | What return does the fund need, over what hold? | Yes | 2.5x MOIC over 5 years. |
 | What's the price and current EBITDA? | Yes | $20M EBITDA at 10x, so $200M. |
 | What does the management plan assume? | Yes | A: 5 new clinics a year, flat reimbursement. B: 4 tuck-in acquisitions a year at 5x. |
-| What's the exit? | No | Vera, delighted: "Finally, someone asks." Then Gus: "That's a bucket, not a question." |
+| What's the exit? | No | Okafor, delighted: "Finally, someone asks." Then Gus: "That's a bucket, not a question." |
 | Do you ever look up? | No | "Once. In 2019." |
 | Should we buy it? | No | "What's the exit?" |
 
@@ -594,15 +594,15 @@ The trap is reusing the M&A board: a PE buyer has no synergies, so value comes f
 
 **WREN:** Don't pay 10x. With 40% of revenue from Medicare and a proposed 3% annual cut, the downside case returns about 1.7x, well under the 2.5x target. At 8x the deal still works in the downside. Next step is diligence on payer contracts, starting with commercial rate renewals.
 
-**VERA:** *Looks up.* And the exit?
+**OKAFOR:** *Looks up.* And the exit?
 
 **WREN:** A larger platform, at about 10x. If we buy at 8.
 
-**VERA:** *Looks back down, satisfied.*
+**OKAFOR:** *Looks back down, satisfied.*
 
 **Hint ladder**
 
-1. "Vera isn't a company. She doesn't have synergies."
+1. "Okafor runs a fund, not a company. A fund doesn't have synergies."
 2. "Where does a fund's return come from?"
 3. "Growth, margin, multiple, debt paydown. That's my value creation bucket."
 
@@ -627,17 +627,17 @@ In this district the Board is an estimation tree instead of buckets: the player 
 
 **Hear the Prompt**
 
-*A tower of stacked abacuses. Professor Tally slides beads with tremendous care.*
+*A tower of stacked abacuses. Moss slides beads with tremendous care.*
 
-**TALLY:** How large is the US market for toothbrush heads? I need it to the dollar. I have been counting since Tuesday.
+**MOSS:** How large is the US market for toothbrush heads? I need it to the dollar. I have been counting since Tuesday.
 
 **WREN:** Which Tuesday?
 
-**TALLY:** A Tuesday in 2019.
+**MOSS:** A Tuesday in 2019.
 
 **MUG** *(from a nearby shelf)*: Call it 2020.
 
-**Lock the Objective.** Correct: "Estimate US annual spend on replacement heads, within a reasonable range, in under 5 minutes." Tile "to the dollar" triggers Tally's joy and Gus's despair.
+**Lock the Objective.** Correct: "Estimate US annual spend on replacement heads, within a reasonable range, in under 5 minutes." Tile "to the dollar" triggers Moss's joy and Gus's despair.
 
 **Spend Lanterns**
 
@@ -646,7 +646,7 @@ In this district the Board is an estimation tree instead of buckets: the player 
 | Annual spend in dollars, or units? | Yes | Dollars per year. |
 | US only, consumer only? | Yes | US consumers only, no dentists. |
 | Just replacement heads, not the handles? | Yes | Heads only. |
-| Can I use exact census data? | No | Tally weeps with joy. Gus: "We round here." |
+| Can I use exact census data? | No | Moss weeps with joy. Gus: "We round here." |
 | How many beads are on the abacus? | No | "4,812. No, 4,813." |
 | What's the answer? | No | "I'll tell you in 2031." |
 
@@ -676,11 +676,11 @@ In this district the Board is an estimation tree instead of buckets: the player 
 
 **WREN:** Roughly $1.5 billion a year. That's 50 million households with an electric brush, two users each, three heads a year at $5. It's about half of the $3 billion category, which makes sense for the recurring product. The biggest swing is replacement frequency, so I'd check that first.
 
-**TALLY:** *Holds a single bead.* One point five. It feels... wonderful.
+**MOSS:** *Holds a single bead.* One point five. It feels... wonderful.
 
 **Hint ladder**
 
-1. "Tally wants precision. The interviewer wants a method."
+1. "Moss wants precision. The interviewer wants a method."
 2. "Start from a number I know, then filter down."
 3. "Households, then share, then users, then frequency, then price."
 
@@ -703,15 +703,15 @@ The trap is cutting the biggest cost bucket: the player must find the most addre
 
 **Hear the Prompt**
 
-*A foundry floor glowing orange. Foreman Rook taps a clipboard with a wrench.*
+*A foundry floor glowing orange. Fizz taps a clipboard with a wrench.*
 
-**ROOK:** Corporate wants 10% out of plant cost in 12 months. Materials are 50% of cost. So we cut materials. Done. Lunch?
+**FIZZ:** Corporate wants 10% out of plant cost in 12 months. Materials are 50% of cost. So we cut materials. Done. Lunch?
 
 **WREN:** Can we cut materials?
 
-**ROOK:** ...Define "cut."
+**FIZZ:** ...Define "cut."
 
-**Lock the Objective.** Correct: "Find 10% of plant cost to remove within 12 months without hurting quality or on-time delivery." A tile without the quality constraint triggers a falling-wrench sound and Rook: "Customers audit us. Quality stays."
+**Lock the Objective.** Correct: "Find 10% of plant cost to remove within 12 months without hurting quality or on-time delivery." A tile without the quality constraint triggers a falling-wrench sound and Fizz: "Customers audit us. Quality stays."
 
 **Spend Lanterns**
 
@@ -722,7 +722,7 @@ The trap is cutting the biggest cost bucket: the player must find the most addre
 | What's measured today? | Yes | A: scrap rate, OEE around 60%. B: packages per labor hour, overtime hours. |
 | Is cost bad? | No | "Generally." |
 | What's for lunch? | No | "Sandwiches. Cut in half. Efficient." |
-| Can we just close the plant? | No | Rook stares. Gus: "Let's go back to the board." |
+| Can we just close the plant? | No | Fizz stares. Gus: "Let's go back to the board." |
 
 **Build the Board**
 
@@ -731,7 +731,7 @@ The trap is cutting the biggest cost bucket: the player must find the most addre
 | Where is the cost, and how much is addressable? | Critical | Cost stack by bucket, share locked by contract or regulation | "Costs" (label only) |
 | Can we use less (volume)? | Critical | A: scrap and rework, yield, material utilization. B: re-handling, empty miles | "Use less stuff" |
 | Can we pay less (rate) or do it faster (productivity)? | Critical | A: OEE, changeover time, overtime. B: shift scheduling, overtime, route density | "Work harder" |
-| Should we change the structure? | Critical | Make vs buy, consolidate lines or shifts, nearshore, automation payback | "Fire everyone" (Rook drops his wrench) |
+| Should we change the structure? | Critical | Make vs buy, consolidate lines or shifts, nearshore, automation payback | "Fire everyone" (Fizz drops the wrench) |
 | Is materials the biggest cost? | Decoy, already answered | | |
 | Are costs high and expensive? | Decoy, overlaps | | |
 
@@ -747,11 +747,11 @@ The trap is cutting the biggest cost bucket: the player must find the most addre
 
 **WREN:** We can hit 10% without touching materials. Materials are half the cost but locked by contract, so the savings come from cutting scrap from 8% to 4%, worth $5M, and lifting OEE from 60% to 70%, worth about $5.6M. The risk is disrupting qualified processes, so next step is a scrap root-cause study on the top three part families.
 
-**ROOK:** So... not materials.
+**FIZZ:** So... not materials.
 
 **WREN:** Not this year.
 
-**ROOK:** *Puts the wrench down gently.* Lunch, then.
+**FIZZ:** *Puts the wrench down gently.* Lunch, then.
 
 **Hint ladder**
 
@@ -948,21 +948,21 @@ Every image the game still needs, with a filename that matches the repo. Backgro
 
 **Portraits** (3 frames each)
 
-| Role | Folder | Description to generate | Existing character that could fill it |
-| --- | --- | --- | --- |
-| Wren, the hero | `public/characters/wren/` | First-week associate, rumpled blazer, sleepy but determined, carrying a notepad | |
-| Gus the Easel | `public/characters/gus/` | A flip-chart easel with a face drawn on the top sheet and a marker in one stubby hand | |
-| The Blank Page | `public/characters/blank_page/` | A huge, nervous floating whiteboard; extra frames: dim, half-glowing, fully glowing gold | |
-| Barnaby Bunch | `public/characters/barnaby/` | Grocer in an apron holding an umbrella over a head of lettuce | |
-| Dr. Helga Sprocket | `public/characters/helga/` | Engineer in a lab coat sitting on a bulging suitcase | |
-| Captain Fen Sterling | `public/characters/fen/` | Airline captain flipping a silver coin | Tug |
-| Juniper Sprout | `public/characters/juniper/` | Cheerful founder holding a watering can | Fizz |
-| Duke Mergeworth | `public/characters/duke/` | Pompous collector in a velvet coat, bidding paddle raised | |
-| Vera Multiple | `public/characters/vera/` | Unflappable investor, glasses, eyes on a spreadsheet | Okafor |
-| Professor Tally | `public/characters/tally/` | Fussy professor holding a single abacus bead | Quill |
-| Foreman Rook | `public/characters/rook/` | Plant foreman in a hard hat tapping a clipboard with a wrench | Moss |
+| Role | Folder | Status |
+| --- | --- | --- |
+| Wren, the hero | `public/characters/wren/` | Closed frame done |
+| Gus the Easel | `public/characters/gus/` | Closed frame done |
+| The Blank Page | `public/characters/blank_page/` | Dim, glow and gold states done |
+| Barnaby Bunch | `public/characters/barnaby/` | Closed frame done |
+| Dr. Helga Sprocket | `public/characters/helga/` | Closed frame done |
+| Tug (Runway Row) | `public/characters/tug/` | All three frames done |
+| Quill (The Greenhouse) | `public/characters/quill/` | All three frames done |
+| Duke Mergeworth | `public/characters/duke/` | Closed frame done |
+| Okafor (The Vault) | `public/characters/okafor/` | All three frames done |
+| Moss (Abacus Heights) | `public/characters/moss/` | All three frames done |
+| Fizz (The Foundry) | `public/characters/fizz/` | All three frames done |
 
-If you use the five existing characters as suggested, only Wren, Gus, The Blank Page, Barnaby, Helga and the Duke are new: 6 characters, about 20 images including The Blank Page's glow frames.
+Characters with only a closed frame bob while they talk. Add `-half` and `-wide` frames to give them a flapping mouth.
 
 **Talking props** (2 frames each: still and talking, transparent PNG)
 
