@@ -16,8 +16,10 @@ the dev server starts and the game opens in a preview tab. Edits reload instantl
 ```bash
 npm install
 npm run dev        # play at http://localhost:5173
-npm test           # lip flap unit tests
+npm test           # unit tests + content checks (every case answerable, every image and speaker exists)
 npm run build      # type check + production build into dist/
+npm run e2e        # browser smoke test + full automated playthrough of dist/ (about 4 minutes)
+npm run ci         # everything CI runs, in order
 ```
 
 ## Playing Casebound
@@ -31,7 +33,8 @@ Warm up with the Vending Oracle in the lobby, crack the eight district cases, th
 - Extras: a hidden Framework Card in every area, Exhibit A's Driver Detective mystery after each case, and the doors'
   Case Quiz once four districts are cleared.
 - **Shift+U** on the map unlocks everything, for testing. **Start over** in the top bar wipes the save.
-- Test mode: add `?auto` to the URL and every choice is picked at random and logged to `window.__cbLog`.
+- Test mode: add `?auto=12345` to the URL (any number) and every choice is picked at random from that seed and
+  logged to `window.__cbLog`. The same number replays the same picks.
 
 The full script is in `docs/casebound-case-framework-script.md`; the game's content lives in `src/casebound/content/`.
 
@@ -100,11 +103,32 @@ into 75 ms beats so the mouth changes about 6 to 13 times a second, like classic
 as the time-coded "talk state" track Humongous shipped with each voice clip, driven by text instead of audio.
 Tune it per character with `cps` (typing speed) in `characters.ts`.
 
-## Publishing
+## CI/CD
 
-Every push to `main` builds and deploys to GitHub Pages via `.github/workflows/pages.yml`.
-One-time setup: repo **Settings → Pages → Source: GitHub Actions**. The game then lives at
-`https://<user>.github.io/humongous-style-game/`.
+`.github/workflows/ci.yml` runs on every push and pull request (changes that only touch `docs/` or Markdown skip it):
+
+1. **Test and build**: content checks, typecheck, production build, size budget (40 MB total, 3 MB per file).
+2. **Browser playthrough**: a real headless Chromium loads every image, clicks Start, then plays the whole game with
+   seeded random answers. Screenshots and the log are saved on the run page under **Artifacts** as `e2e-output`.
+3. **Publish to GitHub Pages**: only on `main`, only when 1 and 2 pass. The game lives at
+   `https://<user>.github.io/humongous-style-game/`.
+
+One-time setup: repo **Settings → Pages → Build and deployment → Source: GitHub Actions**. Until then the publish
+step fails with that instruction. If it ever says "deploy from a branch", change Source to GitHub Actions.
+
+When something goes red:
+
+- **Test and build** failed: open the run and read the first error. Content mistakes name the case and field,
+  for example `CASES.vault.start.options[2].reply[0]`.
+- **Browser playthrough** failed: the log ends with `Replay this exact run with: E2E_SEED=... npm run e2e`.
+  Download `e2e-output` from the run page for screenshots.
+- **Roll back**: revert the bad commit on `main`, or open an older green run (within 30 days) and click
+  **Re-run all jobs**.
+
+To run the browser test in a Codespace, install Chromium once: `npx playwright install --with-deps chromium`.
+
+Dependabot opens at most one grouped update a month for npm packages and one for the workflow's actions.
+Major version jumps (Phaser 4, a new Vite major) are left for you to do on purpose.
 
 ## Credits
 

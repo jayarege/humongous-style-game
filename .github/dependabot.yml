@@ -1,0 +1,24 @@
+version: 2
+updates:
+    # At most one grouped pull request a month for small npm updates. Big version jumps (Phaser 4, a new
+    # Vite major, newer Node types) are left for you to do on purpose. CI must pass before you merge.
+    - package-ecosystem: npm
+      directory: /
+      schedule:
+          interval: monthly
+      open-pull-requests-limit: 1
+      groups:
+          minor-and-patch:
+              update-types: [minor, patch]
+      ignore:
+          - dependency-name: "*"
+            update-types: [version-update:semver-major]
+    # The workflow's actions. These matter: GitHub retires old action versions, which breaks CI.
+    - package-ecosystem: github-actions
+      directory: /
+      schedule:
+          interval: monthly
+      open-pull-requests-limit: 1
+      groups:
+          actions:
+              patterns: ["*"]

@@ -8,6 +8,7 @@ import { commit, cardSpot, save } from "../save";
 import type { CaseResult, L, PlaceDef } from "../types";
 import { addText, AUTO, autoLog, choose, FONT, makeButton, makePanel, notice, stars, tablePanel, toast, type ChooseOptions } from "../ui";
 import { runDoors, runRooftop, runEnding } from "./finale";
+import { rand } from "../rng";
 
 type Img = Phaser.GameObjects.Image;
 
@@ -219,7 +220,7 @@ export class PlaceScene extends Phaser.Scene implements CaseCtx {
     private async detective(): Promise<void> {
         const idx = DISTRICTS.indexOf(this.place.id as (typeof DISTRICTS)[number]);
         const m = MYSTERIES[Math.max(0, idx) % MYSTERIES.length];
-        const order = [0, 1, 2].sort(() => Math.random() - 0.5);
+        const order = [0, 1, 2].sort(() => rand() - 0.5);
         const clues = order.map((i) => m.clues[i]);
         await this.talk([["exhibit", "Something moved my numbers. Read my title first. Then my axes. Then tell me who did it."]]);
         const clueText = clues.map((c, i) => `Clue ${i + 1}: ${c}`).join("\n");
@@ -253,7 +254,7 @@ export class PlaceScene extends Phaser.Scene implements CaseCtx {
     private pickSuspect(title: string, clueText: string, tried: Set<string>): Promise<string> {
         if (AUTO) {
             const left = ["Price", "Volume", "Mix", "Cost"].filter((n) => !tried.has(n));
-            const n = left[Math.floor(Math.random() * left.length)];
+            const n = left[Math.floor(rand() * left.length)];
             autoLog.push(`[suspect] ${title} -> ${n}`);
             return Promise.resolve(n);
         }

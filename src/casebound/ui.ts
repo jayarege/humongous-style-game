@@ -1,4 +1,5 @@
 import Phaser from "phaser";
+import { rand, SEED } from "./rng";
 
 /** Shared look for panels and buttons, matching the dialogue box. */
 export const FONT = '"Trebuchet MS", "Verdana", "Arial Rounded MT Bold", sans-serif';
@@ -8,16 +9,17 @@ const BORDER = 0x3b2a5c;
 const PANEL_DEPTH = 15000;
 
 /**
- * Test mode: open the game with ?auto in the URL and every choice is picked at random (retries included) and every
- * panel closes itself. Used by the automated playthrough; players never see it.
+ * Test mode: open the game with ?auto=SEED in the URL and every choice is picked at random (retries included) and
+ * every panel closes itself. The same seed replays the same picks. Used by the automated playthrough; players never
+ * see it.
  */
-export const AUTO = typeof location !== "undefined" && new URLSearchParams(location.search).has("auto");
-export const autoLog: string[] = [];
-if (AUTO) (window as unknown as { __cbLog: string[] }).__cbLog = autoLog;
+export const AUTO = SEED !== null;
+export const autoLog: string[] = AUTO ? [`[seed] ${SEED}`] : [];
+if (AUTO) Object.assign(window, { __cbLog: autoLog, __cbSeed: SEED });
 
 function randomEnabled(n: number, disabled?: ReadonlySet<number>): number {
     const pool = [...Array(n).keys()].filter((i) => !disabled?.has(i));
-    return pool[Math.floor(Math.random() * pool.length)];
+    return pool[Math.floor(rand() * pool.length)];
 }
 
 export interface ButtonState {
@@ -164,7 +166,7 @@ export function choose(scene: Phaser.Scene, o: ChooseOptions): Promise<number[]>
     if (AUTO) {
         let pick: number[];
         if (o.multi) {
-            const all = [...Array(o.options.length).keys()].sort(() => Math.random() - 0.5);
+            const all = [...Array(o.options.length).keys()].sort(() => rand() - 0.5);
             pick = all.slice(0, o.multi.min).sort((a, b) => a - b);
         } else {
             pick = [randomEnabled(o.options.length, o.disabled)];

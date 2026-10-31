@@ -5,6 +5,7 @@ import { clearedCount, commit, save } from "../save";
 import type { Choice, Gauges, L } from "../types";
 import { stars, tablePanel, toast } from "../ui";
 import type { PlaceScene } from "./PlaceScene";
+import { rand } from "../rng";
 
 export const QUIZ_UNLOCK = 4;
 
@@ -89,7 +90,7 @@ async function doorsMenu(scene: PlaceScene): Promise<void> {
 
 export async function caseQuiz(scene: PlaceScene): Promise<void> {
     const s = save();
-    const pool = [...QUIZ].sort(() => Math.random() - 0.5).slice(0, 4);
+    const pool = [...QUIZ].sort(() => rand() - 0.5).slice(0, 4);
     await scene.talk([
         ["guided", "Welcome to Case Quiz, the only game show where the prize is a better first sentence."],
         ["open", "I'm the co-host. I don't get a script."],
@@ -162,7 +163,7 @@ export async function runRooftop(scene: PlaceScene): Promise<void> {
         ["blank", "I don't have one."],
         ["wren", "Then tell me what's bothering you, in one sentence. That's always the first step."],
     ]);
-    const bp = BLANK_PROMPTS[Math.floor(Math.random() * BLANK_PROMPTS.length)];
+    const bp = BLANK_PROMPTS[Math.floor(rand() * BLANK_PROMPTS.length)];
     await scene.talk([["blank", bp.prompt]]);
     await untilRight(
         scene,

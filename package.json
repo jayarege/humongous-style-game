@@ -10,14 +10,22 @@
         "preview": "vite preview --host",
         "typecheck": "tsc --noEmit",
         "test": "vitest run",
+        "check:size": "node tools/check-dist.mjs",
+        "e2e": "node e2e/playthrough.mjs",
+        "ci": "npm test && npm run build && npm run check:size && npm run e2e",
         "art:placeholders": "python3 tools/make_placeholder_art.py"
     },
     "dependencies": {
         "phaser": "3.90.0"
     },
     "devDependencies": {
+        "@types/node": "22.20.5",
+        "playwright": "1.63.0",
         "typescript": "6.0.3",
         "vite": "^8.0.8",
         "vitest": "^5.0.5"
+    },
+    "engines": {
+        "node": ">=22"
     }
 }

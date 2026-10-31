@@ -1,4 +1,5 @@
 import type { CaseResult } from "./types";
+import { rand } from "./rng";
 
 /**
  * Casebound's progress, saved in this browser. Saving can fail (private windows, blocked storage);
@@ -73,7 +74,7 @@ export function resetSave(): void {
 
 export function cardSpot(placeId: string): 0 | 1 {
     if (data.cardSpots[placeId] === undefined) {
-        data.cardSpots[placeId] = Math.random() < 0.5 ? 0 : 1;
+        data.cardSpots[placeId] = rand() < 0.5 ? 0 : 1;
         commit();
     }
     return data.cardSpots[placeId];
