@@ -103,7 +103,8 @@ jobs:
               env:
                   GH_TOKEN: ${{ github.token }}
               run: |
-                  build_type=$(gh api "repos/${GITHUB_REPOSITORY}/pages" --jq .build_type 2>/dev/null || echo off)
+                  # gh prints the error body on a 404, so go by its exit status, not its output.
+                  if out=$(gh api "repos/${GITHUB_REPOSITORY}/pages" --jq .build_type 2>/dev/null); then build_type=$out; else build_type=off; fi
                   if [ "$build_type" != "workflow" ]; then
                     if [ "$build_type" = "off" ]; then why="GitHub Pages is not turned on"; else why="GitHub Pages is set to \"$build_type\" (deploy from a branch)"; fi
                     msg="$why, so nothing was published. Fix: repo Settings -> Pages -> Build and deployment -> Source: GitHub Actions. Then open this run and click Re-run all jobs."
