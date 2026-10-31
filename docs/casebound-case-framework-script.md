@@ -906,7 +906,13 @@ clickpoints:
 | Region 2, The Border Docks | `public/art/rooms/border_docks.jpg` |
 | Region 3, Runway Row | `public/art/rooms/runway_row.jpg` |
 | Region 4, The Greenhouse | `public/art/rooms/greenhouse.jpg` |
+| Region 5, The Auction Hall | `public/art/rooms/auction_hall.png` |
+| Region 6, The Vault | `public/art/rooms/vault.png` |
+| Region 7, Abacus Heights | `public/art/rooms/abacus_heights.png` |
+| Region 8, The Foundry | `public/art/rooms/foundry.png` |
+| Finale Scene 1, the Two Doors | `public/art/rooms/skyline_base.png` |
+| Finale Scene 2, The Blank Page | `public/art/rooms/skyline_top.png` |
 
-Still needed: The Auction Hall, The Vault, Abacus Heights, The Foundry, the base of the skyline (Two Doors) and the top of the skyline (The Blank Page). Clickable props are in `public/art/props`.
+Every scene now has a background. Clickable props are in `public/art/props`. Still needed: portraits for the clients, Gus, Wren and The Blank Page.
 
 **Content to add next**, in order of interview frequency: new product launch, competitive response, and make vs buy, each using the same schema.
