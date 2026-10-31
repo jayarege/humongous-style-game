@@ -90,6 +90,45 @@
         "x": 0.5,
         "y": 1.0
       }
+    },
+    "duke": {
+      "frames": {
+        "closed": "characters/duke/duke-closed.png",
+        "half": "characters/duke/duke-closed.png",
+        "wide": "characters/duke/duke-closed.png"
+      },
+      "width": 492,
+      "height": 768,
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      }
+    },
+    "helga": {
+      "frames": {
+        "closed": "characters/helga/helga-closed.png",
+        "half": "characters/helga/helga-closed.png",
+        "wide": "characters/helga/helga-closed.png"
+      },
+      "width": 481,
+      "height": 768,
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      }
+    },
+    "gus": {
+      "frames": {
+        "closed": "characters/gus/gus-closed.png",
+        "half": "characters/gus/gus-closed.png",
+        "wide": "characters/gus/gus-closed.png"
+      },
+      "width": 506,
+      "height": 768,
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      }
     }
   }
 }
