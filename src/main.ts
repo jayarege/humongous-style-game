@@ -23,9 +23,27 @@ const game = new Phaser.Game({
 // Handy for debugging in the browser console: __game.scene.getScenes(true)
 (window as unknown as { __game: Phaser.Game }).__game = game;
 
-document.querySelector("#restart")?.addEventListener("click", () => {
-    if (!window.confirm("Start over? This erases your progress.")) return;
-    for (const scene of game.scene.getScenes(true)) game.scene.stop(scene);
-    resetSave();
-    game.scene.start("Title");
-});
+// Two-tap confirm instead of window.confirm, which some embedded viewers block.
+const restart = document.querySelector<HTMLButtonElement>("#restart");
+if (restart) {
+    const label = restart.textContent ?? "Start over";
+    let armed = false;
+    let timer = 0;
+    restart.addEventListener("click", () => {
+        if (!armed) {
+            armed = true;
+            restart.textContent = "Tap again to erase progress";
+            timer = window.setTimeout(() => {
+                armed = false;
+                restart.textContent = label;
+            }, 4000);
+            return;
+        }
+        window.clearTimeout(timer);
+        armed = false;
+        restart.textContent = label;
+        for (const scene of game.scene.getScenes(true)) game.scene.stop(scene);
+        resetSave();
+        game.scene.start("Title");
+    });
+}
