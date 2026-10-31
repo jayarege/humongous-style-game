@@ -899,19 +899,19 @@ clickpoints:
 
 | Scene | Background file |
 | --- | --- |
-| Prologue Scene 1, the office (and the 6 a.m. ending) | `public/art/rooms/office_desk.jpg` |
-| Prologue Scene 1, the sticky-note landing | `public/art/rooms/sticky_note_landing.jpg` |
-| Prologue Scene 2, the lobby | `public/art/rooms/hotel_lobby.jpg` |
-| Region 1, Margin Market | `public/art/rooms/margin_market.jpg` |
-| Region 2, The Border Docks | `public/art/rooms/border_docks.jpg` |
-| Region 3, Runway Row | `public/art/rooms/runway_row.jpg` |
-| Region 4, The Greenhouse | `public/art/rooms/greenhouse.jpg` |
-| Region 5, The Auction Hall | `public/art/rooms/auction_hall.png` |
-| Region 6, The Vault | `public/art/rooms/vault.png` |
-| Region 7, Abacus Heights | `public/art/rooms/abacus_heights.png` |
-| Region 8, The Foundry | `public/art/rooms/foundry.png` |
-| Finale Scene 1, the Two Doors | `public/art/rooms/skyline_base.png` |
-| Finale Scene 2, The Blank Page | `public/art/rooms/skyline_top.png` |
+| Prologue Scene 1, the office (and the 6 a.m. ending) | `public/art/rooms/office_desk.webp` |
+| Prologue Scene 1, the sticky-note landing | `public/art/rooms/sticky_note_landing.webp` |
+| Prologue Scene 2, the lobby | `public/art/rooms/hotel_lobby.webp` |
+| Region 1, Margin Market | `public/art/rooms/margin_market.webp` |
+| Region 2, The Border Docks | `public/art/rooms/border_docks.webp` |
+| Region 3, Runway Row | `public/art/rooms/runway_row.webp` |
+| Region 4, The Greenhouse | `public/art/rooms/greenhouse.webp` |
+| Region 5, The Auction Hall | `public/art/rooms/auction_hall.webp` |
+| Region 6, The Vault | `public/art/rooms/vault.webp` |
+| Region 7, Abacus Heights | `public/art/rooms/abacus_heights.webp` |
+| Region 8, The Foundry | `public/art/rooms/foundry.webp` |
+| Finale Scene 1, the Two Doors | `public/art/rooms/skyline_base.webp` |
+| Finale Scene 2, The Blank Page | `public/art/rooms/skyline_top.webp` |
 
 Every scene now has a background. Clickable props are in `public/art/props`. Still needed: portraits for the clients, Gus, Wren and The Blank Page.
 
