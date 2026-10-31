@@ -129,6 +129,24 @@
         "x": 0.5,
         "y": 1.0
       }
+    },
+    "blank_page": {
+      "frames": {
+        "closed": "characters/blank_page/blank_page-dim.png",
+        "half": "characters/blank_page/blank_page-dim.png",
+        "wide": "characters/blank_page/blank_page-dim.png"
+      },
+      "states": {
+        "dim": "characters/blank_page/blank_page-dim.png",
+        "glow": "characters/blank_page/blank_page-glow.png",
+        "gold": "characters/blank_page/blank_page-gold.png"
+      },
+      "width": 632,
+      "height": 888,
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      }
     }
   }
 }
