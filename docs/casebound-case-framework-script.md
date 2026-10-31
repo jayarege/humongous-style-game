@@ -829,6 +829,170 @@ Then the player writes 3 buckets as questions from a free word bank. The Blank P
 
 **Rank screen.** Shows the five gauges across all districts, the weakest gauge, and a suggested replay district for it (for example, low Communication suggests Runway Row, where answer-first closes are hardest).
 
+## Minigames
+
+Three optional minigames turn the most common side games in classic kids' adventure games (a quiz show, a hidden-collectible hunt and a whodunit) into case practice. None of them can fail you, and none blocks the main path.
+
+| Minigame | Host | Where | Unlocks | Practices |
+| --- | --- | --- | --- | --- |
+| Case Quiz | The Guided Door and The Open Door | Base of the skyline, open after 4 districts, replayable | Stars and the "Game Show Champion" title | Opening routine, board rules, case math |
+| Framework Card hunt | Gus, who keeps the album | One hidden card in the lobby and in each district (9 total) | All 9 unlock a bonus ending | Remembering one rule per case type |
+| Driver Detective | Exhibit A, the talking wall chart | Every district, after its case is closed | Analytics stars | Finding where a change is concentrated |
+
+### 1. Case Quiz (quiz show)
+
+The two doors at the base of the skyline run a game show. It opens after 4 districts as a mid-game break, so the doors are familiar before the finale. Each round draws 4 questions from the pool below, one or two per category. A wrong answer gets an explanation and one retry for half credit.
+
+**Opening**
+
+**THE GUIDED DOOR:** Welcome to Case Quiz, the only game show where the prize is a better first sentence.
+
+**THE OPEN DOOR:** I'm the co-host. I don't get a script.
+
+**THE GUIDED DOOR:** You never wanted one.
+
+**THE OPEN DOOR:** Pick a category. Any category. I'll wait. I'm good at waiting.
+
+**Reactions** (rotate)
+
+- Correct, Guided Door: "Correct. In exactly the order I expected."
+- Correct, Open Door: "Correct, and you got there yourself."
+- Wrong, Guided Door: "Not quite." *Then reads the explanation from the table.*
+- Wrong, Open Door: "Close. Want another swing?"
+
+**Sign-off**
+
+**THE GUIDED DOOR:** That's the round.
+
+**THE OPEN DOOR:** Come back anytime. The door's open.
+
+**THE GUIDED DOOR:** *Sighs.* He's been waiting all night to say that.
+
+**Question pool**
+
+| Category | Question | Options | Answer | Explanation |
+| --- | --- | --- | --- | --- |
+| Openings | What two things should your restated objective always include? | A metric and a timeframe / A framework name and a hypothesis / The client's name and industry | A metric and a timeframe | Without them you can't tell when you've answered the question. |
+| Openings | Which clarifying question wastes a lantern? | How does the client make money? / How does the client define success? / Is the problem revenue or cost? | Is the problem revenue or cost? | Your board answers that one. Ask what the board can't. |
+| Openings | After presenting your structure, what's the step people skip most? | Asking for data / Prioritizing and stating a hypothesis / Restating the prompt | Prioritizing and stating a hypothesis | Say where you'd start and what you expect to find. |
+| Openings | How long should you take to write your structure? | 10 seconds / 60 to 90 seconds / 5 minutes | 60 to 90 seconds | Long enough to think, short enough to keep the room. |
+| Boards | Which of these is a label, not a bucket? | "Is the market attractive?" / "Market" / "Can the client win?" | "Market" | Buckets are questions, so each one ties back to the objective. |
+| Boards | How many top-level buckets is right? | Two / Three or four / Six or more | Three or four | Two feels thin; five or more is hard to hold in anyone's head. |
+| Boards | Best sub-points for an airline's cost bucket? | Fixed and variable / Fuel, labor, aircraft ownership / Things that cost money | Fuel, labor, aircraft ownership | Industry-specific beats generic every time. |
+| Boards | Which bucket doesn't belong on a private equity board? | Value creation plan / Synergies with the buyer / Exit | Synergies with the buyer | A fund owns no other business to combine with. |
+| Numbers | Price up 10%, volume down 5%. Revenue changes by about? | Up 5% / Up 4.5% / Down 5% | Up 4.5% | 1.10 times 0.95 is 1.045. |
+| Numbers | Doubling in 4 years needs about what yearly growth? | 10% / 18% / 25% | 18% | Rule of 72: 72 divided by 4. |
+| Numbers | Profit falls from $40M to $34M. What percent drop? | 6% / 15% / 18% | 15% | $6M lost out of the starting $40M. |
+| Numbers | 2.5 times your money in 5 years is about what yearly return? | 10% / 20% / 35% | 20% | 1.2 to the fifth power is about 2.5. |
+
+**Scoring.** 1 star per first-try answer, half a star on a retry. A perfect 12 across rounds adds "Game Show Champion" to the rank screen.
+
+### 2. Framework Card hunt (collectibles)
+
+Nine Framework Cards are hidden around the Undercase: one in the prologue lobby and one in each district. Each card sits in one of two spots, picked by the variant seed, so replays move them. Clicking a card sends it to Gus's album, and he reads it out.
+
+| Location | Hiding spot A | Hiding spot B | Card text |
+| --- | --- | --- | --- |
+| Prologue lobby | In the vending machine's tray | Behind the potted palm | Restate the goal with a metric and a timeframe. |
+| Margin Market | Under the lettuce | In the umbrella stand | Find where the change is concentrated before you name a cause. |
+| The Border Docks | Inside the suitcase | Behind the customs sign | A big market isn't a winnable one. Ask who's already there. |
+| Runway Row | Tucked in the windsock | Stuck to the departure board | Segment before you set a price. |
+| The Greenhouse | In the watering can | Inside the AI seed packet | Sort ideas into core, adjacent and new, then rank them. |
+| The Auction Hall | Under the gavel | Hanging from the chandelier | A deal works only if net synergies beat the premium. |
+| The Vault | Between spreadsheet pages | Behind the vault door | A fund has no synergies: growth, margin, multiple, debt. |
+| Abacus Heights | On the abacus | Next to the single bead | Round early and say your assumptions out loud. |
+| The Foundry | In the scrap bin | Behind the OEE gauge | Biggest isn't the same as addressable. Find what can move. |
+
+**Gus lines**
+
+- First card: "Ooh, a card! Hold still, I'm putting a box around it."
+- Cards 2 to 8: "Another one for the album." *Then reads the card.*
+- Ninth card: "A full album. Nine boxes. My best work."
+
+**Reward.** With all nine, the finale gains a short bonus scene. After the last bucket, The Blank Page asks to see the album and keeps the first card: "So I always remember how to start." The 6 a.m. ending then shows the album open on Wren's desk.
+
+### 3. Driver Detective (whodunit)
+
+Once a district's case is closed, Exhibit A, a chart on the wall, offers a quick mystery. Three clue cards appear, one of them a red herring, plus four suspect cards: **Price**, **Volume**, **Mix** and **Cost**. You accuse a suspect, then pick the clue that proves it. The right suspect with the right clue earns an Analytics star; the right suspect with the wrong clue earns half a star and an explanation.
+
+**EXHIBIT A:** Something moved my numbers. Read my title first. Then my axes. Then tell me who did it.
+
+- Correct: "Case closed. And you read my title. Nobody reads my title."
+- Wrong suspect: "Interesting theory. Look at clue two again."
+- Herring picked as proof: "Right suspect, wrong evidence. That clue would be true either way."
+
+**Puzzle pool** (each district draws one)
+
+| Mystery | Clue 1 | Clue 2 | Clue 3 | Culprit | Proof |
+| --- | --- | --- | --- | --- | --- |
+| A bakery's revenue fell 10% | Loaves sold held flat at 2,000 a week | Average price per loaf fell from $5.00 to $4.50 | A new bakery opened two blocks away | Price | Clue 2 |
+| A gym's revenue fell 12% | Monthly fee stayed at $50 | Members fell from 1,000 to 880 | The lobby was repainted | Volume | Clue 2 |
+| A coffee cart's profit fell 20% on flat revenue | Cups sold and prices both unchanged | Milk cost per cup doubled, from $0.40 to $0.80 | The barista changed the playlist | Cost | Clue 2 |
+| A bookstore's revenue fell 8% | Books sold held flat, and no title changed price | Hardcovers ($30) fell from half of sales to 30%, replaced by paperbacks ($20) | Store hours didn't change | Mix | Clue 2 |
+
+Shuffle the clue order on screen so the proof isn't always in the same slot. Add new mysteries to the pool in the same format.
+
+### Minigame flags
+
+| Flag | Set when | Used for |
+| --- | --- | --- |
+| `quiz_unlocked` | 4 districts cleared | Opens Case Quiz at the base of the skyline |
+| `quiz_best_score` | A quiz round ends | Rank screen title at 12 |
+| `card_spot_seed` | New game starts | Picks spot A or B for each card |
+| `cards_found[]` | A card is clicked | Album count; bonus finale scene at 9 |
+| `detective_solved[district]` | Driver Detective solved | Analytics stars; hides the chart's prompt afterward |
+
+## Art checklist
+
+Every image the game still needs, with a filename that matches the repo. Backgrounds are done: all 13 are in `public/art/rooms` at 1920x1080. Portraits use the same three mouth frames as the characters already in `public/characters` (closed, half open, wide open), on a transparent background, about 768 pixels tall.
+
+**Portraits** (3 frames each)
+
+| Role | Folder | Description to generate | Existing character that could fill it |
+| --- | --- | --- | --- |
+| Wren, the hero | `public/characters/wren/` | First-week associate, rumpled blazer, sleepy but determined, carrying a notepad | |
+| Gus the Easel | `public/characters/gus/` | A flip-chart easel with a face drawn on the top sheet and a marker in one stubby hand | |
+| The Blank Page | `public/characters/blank_page/` | A huge, nervous floating whiteboard; extra frames: dim, half-glowing, fully glowing gold | |
+| Barnaby Bunch | `public/characters/barnaby/` | Grocer in an apron holding an umbrella over a head of lettuce | |
+| Dr. Helga Sprocket | `public/characters/helga/` | Engineer in a lab coat sitting on a bulging suitcase | |
+| Captain Fen Sterling | `public/characters/fen/` | Airline captain flipping a silver coin | Tug |
+| Juniper Sprout | `public/characters/juniper/` | Cheerful founder holding a watering can | Fizz |
+| Duke Mergeworth | `public/characters/duke/` | Pompous collector in a velvet coat, bidding paddle raised | |
+| Vera Multiple | `public/characters/vera/` | Unflappable investor, glasses, eyes on a spreadsheet | Okafor |
+| Professor Tally | `public/characters/tally/` | Fussy professor holding a single abacus bead | Quill |
+| Foreman Rook | `public/characters/rook/` | Plant foreman in a hard hat tapping a clipboard with a wrench | Moss |
+
+If you use the five existing characters as suggested, only Wren, Gus, The Blank Page, Barnaby, Helga and the Duke are new: 6 characters, about 20 images including The Blank Page's glow frames.
+
+**Talking props** (2 frames each: still and talking, transparent PNG)
+
+| Prop | File | Description |
+| --- | --- | --- |
+| Vending Oracle | `public/art/props/vending_oracle_still.png`, `vending_oracle_talk.png` | Sad vending machine with a face in the display window |
+| Mug | `public/art/props/mug_still.png`, `mug_talk.png` | Chipped coffee mug with a face, steam curling up |
+| The Unspeakable Cabinet | `public/art/props/cabinet_still.png`, `cabinet_talk.png` | Filing cabinet with a drawer for a mouth, clamped shut in the still frame |
+| Exhibit A | `public/art/props/exhibit_a_still.png`, `exhibit_a_talk.png` | Bar chart in a frame with a face in the title area; needed for Driver Detective |
+
+**Minigame art**
+
+| Item | File | Description |
+| --- | --- | --- |
+| Framework Card | `public/art/props/framework_card.png` | Small glowing card with a box-and-arrows icon, readable at 64 pixels |
+| Card album | `public/art/ui/card_album.png` | Open scrapbook with 9 empty card slots in a 3x3 grid |
+| Quiz answer button | `public/art/ui/quiz_button.png` | Rounded wooden plaque that text can sit on |
+| Suspect cards | `public/art/ui/suspect_price.png`, `suspect_volume.png`, `suspect_mix.png`, `suspect_cost.png` | Four "wanted poster" cards: a price tag, a stack of boxes, a pie chart and a coin purse |
+| Clue card | `public/art/ui/clue_card.png` | Blank index card that clue text sits on |
+
+**Case-loop UI** (can be plain styled panels in code instead of art)
+
+| Item | File | Description |
+| --- | --- | --- |
+| Question Lantern | `public/art/ui/lantern_lit.png`, `lantern_out.png` | Small lantern, lit and spent |
+| Hypothesis Flag | `public/art/ui/hypothesis_flag.png` | Little pennant on a pin, for planting on a bucket |
+| Bucket card | `public/art/ui/bucket_card.png` | Blank card for bucket text |
+| Sub-point card | `public/art/ui/subpoint_card.png` | Smaller blank card |
+| Thought bubble | already in the repo as `public/art/ui/bubble.png` | Used for the hint ladder |
+
 ## Implementation notes
 
 Every district shares one data shape, so the script above can be loaded as content files and the engine only needs one case loop.
