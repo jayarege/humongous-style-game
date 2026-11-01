@@ -23,3 +23,27 @@ function mulberry32(seed: number): () => number {
 
 /** A number in [0, 1). */
 export const rand: () => number = SEED === null ? Math.random : mulberry32(SEED);
+
+/** Changes every page load (or per seed in test mode), so answer positions differ from one play to the next. */
+const ORDER_SALT = SEED ?? Math.floor(Math.random() * 2 ** 32);
+
+/** FNV-1a: a small string hash. */
+function hash(s: string): number {
+    let h = 0x811c9dc5;
+    for (let i = 0; i < s.length; i++) h = Math.imul(h ^ s.charCodeAt(i), 0x01000193);
+    return h >>> 0;
+}
+
+/**
+ * The order to show a question's options in. Shuffled so the right answer's position gives nothing away, but stable for
+ * the same question within one play, so a retry after a wrong pick keeps every option where it was.
+ */
+export function shuffledOrder(n: number, key: string, salt: number = ORDER_SALT): number[] {
+    const next = mulberry32(hash(key) ^ salt);
+    const order = [...Array(n).keys()];
+    for (let i = n - 1; i > 0; i--) {
+        const j = Math.floor(next() * (i + 1));
+        [order[i], order[j]] = [order[j], order[i]];
+    }
+    return order;
+}

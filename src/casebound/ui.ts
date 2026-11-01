@@ -1,5 +1,5 @@
 import Phaser from "phaser";
-import { rand, SEED } from "./rng";
+import { rand, SEED, shuffledOrder } from "./rng";
 
 /** Shared look for panels and buttons, matching the dialogue box. */
 export const FONT = '"Trebuchet MS", "Verdana", "Arial Rounded MT Bold", sans-serif';
@@ -159,6 +159,8 @@ export interface ChooseOptions {
     /** Shows a Hint button. */
     onHint?: () => Promise<void>;
     width?: number;
+    /** Show options in the order given instead of shuffled (for lists where order means something). */
+    keepOrder?: boolean;
 }
 
 /** Shows a choice panel. Resolves with the picked option indexes (one, unless `multi`). */
@@ -215,7 +217,10 @@ export function choose(scene: Phaser.Scene, o: ChooseOptions): Promise<number[]>
             counter.setText(`Picked ${n} (need ${o.multi.min === o.multi.max ? o.multi.min : `${o.multi.min} to ${o.multi.max}`})`);
             submit.set({ disabled: n < o.multi.min || n > o.multi.max });
         };
-        o.options.forEach((label, i) => {
+        // Shown in shuffled order; picks still report each option's original index.
+        const order = o.keepOrder ? [...o.options.keys()] : shuffledOrder(o.options.length, o.options.join("|"));
+        order.forEach((i) => {
+            const label = o.options[i];
             const b = makeButton(scene, content, x + 28, y, inner, label, () => {
                 if (!o.multi) return finish([i]);
                 if (picked.has(i)) picked.delete(i);

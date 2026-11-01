@@ -11,6 +11,7 @@ import { IMAGES } from "./assets";
 import { CASES } from "./content/cases";
 import { BLANK_PROMPTS, GAUGE_REPLAY, GUIDED_DOOR, MYSTERIES, OPEN_DOOR, QUIZ, SCAFFOLDS } from "./content/minigames";
 import { DISTRICTS, PLACES } from "./content/places";
+import { shuffledOrder } from "./rng";
 import { caseboundSpeakerDefs } from "./speakerDefs";
 import type { Choice, L } from "./types";
 
@@ -229,5 +230,46 @@ describe("minigames", () => {
 
     it("the rank screen's replay suggestions point at real districts", () => {
         for (const [gauge, id] of Object.entries(GAUGE_REPLAY)) expect(PLACES[id], `${gauge} -> ${id}`).toBeDefined();
+    });
+});
+
+describe("difficulty", () => {
+    /** Every one-right-answer choice except the math steps, where answers are short numbers. */
+    function choiceLists(): { where: string; options: Choice[] }[] {
+        const out: { where: string; options: Choice[] }[] = [];
+        for (const c of Object.values(CASES)) {
+            c.objective.forEach((r) => out.push({ where: `${c.id} objective ${r.label}`, options: r.options }));
+            out.push({ where: `${c.id} start`, options: c.start.options });
+            out.push({ where: `${c.id} hypothesis`, options: c.hypothesis.options });
+            out.push({ where: `${c.id} data`, options: c.data.options });
+            out.push({ where: `${c.id} close`, options: c.close.options });
+        }
+        GUIDED_DOOR.steps.filter((s) => s.label !== "Math").forEach((s) => out.push({ where: `guided ${s.label}`, options: s.options }));
+        out.push({ where: "open ask", options: OPEN_DOOR.ask.options }, { where: "open so-what", options: OPEN_DOOR.sowhat.options });
+        return out;
+    }
+
+    it("the right answer can't be spotted by being much longer than the wrong ones", () => {
+        // A right answer 15% longer than every wrong one is a giveaway. A few are fine; a pattern is not.
+        const lists = choiceLists();
+        const tells = lists.filter(({ options }) => {
+            const ok = options.find((o) => o.ok)!.text.length;
+            const longestWrong = Math.max(...options.filter((o) => !o.ok).map((o) => o.text.length));
+            return ok > longestWrong * 1.15;
+        });
+        expect(tells.length / lists.length, `length giveaways: ${tells.map((t) => t.where).join(", ")}`).toBeLessThanOrEqual(0.1);
+    });
+
+    it("every wrong answer explains itself when picked", () => {
+        const silent = choiceLists().flatMap(({ where, options }) => options.filter((o) => !o.ok && !o.reply?.length).map((o) => `${where}: ${o.text}`));
+        expect(silent).toEqual([]);
+    });
+
+    it("answer order is shuffled evenly, and stays put for a retry", () => {
+        const counts = [0, 0, 0];
+        for (let salt = 0; salt < 3000; salt++) counts[shuffledOrder(3, "a|b|c", salt).indexOf(0)] += 1;
+        for (const n of counts) expect(n).toBeGreaterThan(850);
+        expect(shuffledOrder(5, "same question", 7)).toEqual(shuffledOrder(5, "same question", 7));
+        expect([...shuffledOrder(5, "x", 1)].sort()).toEqual([0, 1, 2, 3, 4]);
     });
 });
