@@ -55,13 +55,14 @@ export async function runCase(ctx: CaseCtx, c: CaseData): Promise<CaseResult> {
         }
     };
 
+    await ctx.notice(`Case: ${c.brief.company}`, c.brief.text, "Start the case");
     await ctx.talk(c.prompt);
 
     // 1. Lock the objective, one tile row at a time.
     await tutorial("objective");
     let lanterns = 3;
     for (const row of c.objective) {
-        const r = await untilRight({ title: "Lock the Objective", prompt: `${row.label}: pick the tile that fits.` }, row.options, (choice) => {
+        const r = await untilRight({ title: "Lock the Objective", prompt: `${row.label}: pick the tile that fits.`, card: c.brief.text }, row.options, (choice) => {
             if (choice.costsLantern) lanterns -= 1;
         });
         if (r.firstTry) g.structure += 1 / c.objective.length;
@@ -87,6 +88,15 @@ export async function runCase(ctx: CaseCtx, c: CaseData): Promise<CaseResult> {
         await ctx.talk([["wren", lantern.q], ...lantern.reply]);
     }
     g.judgment += useful >= 2 ? 0 : -0.5;
+    // Later steps lean on these facts, so the ones you skipped are handed over anyway, like an interviewer
+    // filling you in. Asking for them yourself is what earns the Judgment star.
+    const missed = c.lanterns.filter((l, i) => l.useful && !asked.has(i));
+    if (missed.length) {
+        await ctx.talk([
+            ["gus", missed.length === 1 ? "You didn't ask this one, but you'll need it:" : "You didn't ask these, but you'll need them:"],
+            ...missed.flatMap((l) => [["wren", l.q] as L, ...l.reply]),
+        ]);
+    }
 
     // 3. Build the board.
     await tutorial("board");

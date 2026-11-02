@@ -36,6 +36,8 @@ export type Beat = "objective" | "lanterns" | "board" | "flag" | "drive" | "clos
 
 export interface CaseData {
     id: string;
+    /** The traditional case opening, shown before the host's banter and again while locking the objective. */
+    brief: { company: string; text: string };
     host: string;
     title: string;
     caseType: string;

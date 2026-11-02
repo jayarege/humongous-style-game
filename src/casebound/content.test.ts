@@ -122,6 +122,25 @@ describe("cases", () => {
         describe(c.id, () => {
             it("host is a registered speaker", () => expect(SPEAKERS.has(c.host), c.host).toBe(true));
 
+            it("opens with a case brief that names the client", () => {
+                expect(c.brief.company.trim().length).toBeGreaterThan(0);
+                expect(c.brief.text.toLowerCase(), "the brief should name the company").toContain(c.brief.company.toLowerCase());
+            });
+
+            it("every number in the right objective tiles was given to the player first", () => {
+                // You can't be expected to pick "10x EBITDA" if nobody said 10x. Numbers must appear in the case brief or prompt,
+                // or in what an earlier right tile revealed (Helga's target, for example).
+                let known = `${c.brief.text} ${c.prompt.map((l) => l[1]).join(" ")}`;
+                for (const row of c.objective) {
+                    for (const o of row.options.filter((x) => x.ok)) {
+                        for (const n of o.text.match(/\$?\d+(?:\.\d+)?[xMB%]?/g) ?? []) {
+                            expect(known.includes(n), `${row.label}: "${o.text}" uses ${n}, which the player was never told`).toBe(true);
+                        }
+                        known += ` ${(o.reply ?? []).map((l) => l[1]).join(" ")}`;
+                    }
+                }
+            });
+
             it("every objective row is answerable", () => {
                 expect(c.objective.length).toBeGreaterThan(0);
                 c.objective.forEach((row, i) => expectAnswerable(row.options, `objective[${i}] ${row.label}`));

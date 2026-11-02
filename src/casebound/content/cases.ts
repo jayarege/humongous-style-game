@@ -12,6 +12,10 @@ import type { CaseData } from "../types";
 
 const prologue: CaseData = {
     id: "lobby",
+    brief: {
+        company: "The Vending Oracle",
+        text: "Your client is the Vending Oracle, a snack machine in the lobby of the Grand Undercase Hotel. Its profit fell 20% this quarter compared with last quarter. The owner has asked you to find out why, and what to do about it.",
+    },
     host: "oracle",
     title: "The Vending Oracle",
     caseType: "Warm-up",
@@ -132,6 +136,10 @@ const prologue: CaseData = {
 
 const marginMarket: CaseData = {
     id: "margin_market",
+    brief: {
+        company: "Barnaby's Market",
+        text: "Your client is Barnaby's Market, a regional grocery chain with 60 stores. Profit has fallen 15% over the past two years. The owners want profit back to its old level within 18 months, and have asked you to find what's driving the decline and how to fix it.",
+    },
     host: "barnaby",
     title: "Margin Market",
     caseType: "Profitability",
@@ -248,6 +256,10 @@ const marginMarket: CaseData = {
 
 const borderDocks: CaseData = {
     id: "border_docks",
+    brief: {
+        company: "Sprocket Surgical",
+        text: "Your client is Sprocket Surgical, a European maker of surgical robots, sold to hospitals in 12 countries. The company is considering entering the United States. The CEO, Dr. Helga Sprocket, has asked you whether it should.",
+    },
     host: "helga",
     title: "The Border Docks",
     caseType: "Market entry",
@@ -365,6 +377,10 @@ const borderDocks: CaseData = {
 
 const runwayRow: CaseData = {
     id: "runway_row",
+    brief: {
+        company: "Tugboat Air",
+        text: "Your client is Tugboat Air, a regional airline flying 40 routes. Management is considering a 5% fare increase on all routes for next year's schedule. They have asked you whether the increase would raise profit over the next year.",
+    },
     host: "tug",
     title: "Runway Row",
     caseType: "Pricing",
@@ -477,6 +493,10 @@ const runwayRow: CaseData = {
 
 const greenhouse: CaseData = {
     id: "greenhouse",
+    brief: {
+        company: "Quillwork",
+        text: "Your client is Quillwork, a scheduling software company that sells to clinics and salons. Revenue is $50M today. The board wants to double it to $100M within four years, and the CEO has asked you which growth options to pursue.",
+    },
     host: "quill",
     title: "The Greenhouse",
     caseType: "Growth strategy",
@@ -589,6 +609,10 @@ const greenhouse: CaseData = {
 
 const auctionHall: CaseData = {
     id: "auction_hall",
+    brief: {
+        company: "Mergeworth Foods",
+        text: "Your client is Mergeworth Foods, a large packaged-food company. It has agreed in principle to buy Crunchwell Snacks, a fast-growing snack maker, at a 40% premium to its value on its own. The CEO, Duke Mergeworth, wants to know whether the deal creates value for Mergeworth's shareholders.",
+    },
     host: "duke",
     title: "The Auction Hall",
     caseType: "Corporate M&A",
@@ -609,7 +633,7 @@ const auctionHall: CaseData = {
         {
             label: "Metric",
             options: [
-                { text: "value for the Duke's shareholders", ok: true },
+                { text: "value for Mergeworth's shareholders", ok: true },
                 { text: "combined revenue after the deal", reply: [["duke", "Bigger!"], ["gus", "Bigger isn't better if you overpay."]] },
                 { text: "the target's revenue growth rate", reply: [["duke", "It's growing!"], ["gus", "A driver, not the goal."]] },
             ],
@@ -701,6 +725,10 @@ const auctionHall: CaseData = {
 
 const vault: CaseData = {
     id: "vault",
+    brief: {
+        company: "Vaultline Capital",
+        text: "Your client is Vaultline Capital, a private equity fund. It is considering buying StrideWell, a chain of 60 physical therapy clinics, for 10x EBITDA. The fund targets about 2.5x its money over a five-year hold. The partner on the deal has asked you whether the fund should buy at that price.",
+    },
     host: "okafor",
     title: "The Vault",
     caseType: "PE due diligence",
@@ -813,6 +841,10 @@ const vault: CaseData = {
 
 const abacusHeights: CaseData = {
     id: "abacus_heights",
+    brief: {
+        company: "Moss & Bead",
+        text: "Your client is Moss & Bead, a consumer goods company thinking about selling its own electric toothbrush heads. Before deciding, it wants to know how big the US market for electric toothbrush heads is. Like an interview, you have 5 minutes.",
+    },
     host: "moss",
     title: "Abacus Heights",
     caseType: "Market sizing",
@@ -924,6 +956,10 @@ const abacusHeights: CaseData = {
 
 const foundry: CaseData = {
     id: "foundry",
+    brief: {
+        company: "Fizzwick Precision",
+        text: "Your client is Fizzwick Precision, a plant that machines titanium and alloy parts for aircraft. Corporate has asked the plant to take 10% out of its total cost within 12 months, without hurting quality or on-time delivery.",
+    },
     host: "fizz",
     title: "The Foundry",
     caseType: "Operations and cost",
