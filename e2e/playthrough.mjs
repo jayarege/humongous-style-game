@@ -134,12 +134,13 @@ async function playthrough(browser, url) {
     // The first district is entered the way a player would: by clicking its building on the town map.
     const first = content.districts[0];
     const spot = await page.evaluate((id) => {
-        const hub = window.__game.scene.getScene("Hub");
-        const zone = hub.children.list.find((o) => o.type === "Zone" && o.input && o.width === 70 && o.getData?.("spot") === id);
+        // Scroll the island so the area is on screen, then click its sign like a player.
+        const p = window.__game.scene.getScene("Hub").focus(id);
         const r = window.__game.canvas.getBoundingClientRect();
         const k = r.width / 1280;
-        return zone ? { x: r.left + zone.x * k, y: r.top + zone.y * k } : null;
+        return p ? { x: r.left + p.x * k, y: r.top + p.y * k } : null;
     }, first);
+    await page.waitForTimeout(300);
     if (!spot) throw new Error(`no map spot for ${first}`);
     await page.mouse.click(spot.x, spot.y);
     await waitFor(page, placeIdle, `enter ${first} from the map`, 60000, first);

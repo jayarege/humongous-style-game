@@ -16,7 +16,7 @@ const ROOMS = [
     "foundry",
     "skyline_base",
     "skyline_top",
-    "town_map",
+    "island_map",
 ];
 
 /** Characters with closed / half / wide mouth frames. */

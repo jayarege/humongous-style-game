@@ -3,7 +3,7 @@ import { BLANK_PROMPTS, GAUGE_REPLAY, GUIDED_DOOR, OPEN_DOOR, QUIZ, SCAFFOLDS } 
 import { PLACES } from "../content/places";
 import { clearedCount, commit, save } from "../save";
 import type { Choice, Gauges, L } from "../types";
-import { stars, tablePanel, toast } from "../ui";
+import { makeButton, stars, tablePanel, toast } from "../ui";
 import type { PlaceScene } from "./PlaceScene";
 import { rand } from "../rng";
 
@@ -268,5 +268,13 @@ async function rankScreen(scene: PlaceScene): Promise<void> {
         [{ label: "Back to the map", onClick: () => (toMap = true) }, { label: "Watch the sunrise" }],
         720,
     );
-    if (toMap) scene.toMap();
+    if (toMap) {
+        scene.toMap();
+        return;
+    }
+    // Watching the sunrise: a quiet moment, then a way back so the ending is never a dead end.
+    await scene.talk([["narrator", "The sun comes up over the hills. Somewhere, a vending machine hums happily."]]);
+    const bar = scene.add.container(0, 0).setDepth(9000);
+    makeButton(scene, bar, 640 - 120, 640, 240, "Back to the map", () => scene.toMap(), { center: true, fontSize: 20, fill: 0xffd23f });
+    makeButton(scene, bar, 640 - 120, 580, 240, "See my rank again", () => scene.run(() => rankScreen(scene)), { center: true, fontSize: 18 });
 }
