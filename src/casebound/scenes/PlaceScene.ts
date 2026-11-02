@@ -1,5 +1,6 @@
 import Phaser from "phaser";
 import { bindSpeaker, conversation } from "../../dialogue/talk";
+import { openBoard, type BoardHandle, type BoardOptions } from "../boardUi";
 import { runCase, type CaseCtx } from "../caseRunner";
 import { CASES } from "../content/cases";
 import { DISTRICTS, PLACES } from "../content/places";
@@ -113,6 +114,10 @@ export class PlaceScene extends Phaser.Scene implements CaseCtx {
 
     notice(title: string, body: string, button?: string): Promise<void> {
         return notice(this, title, body, button);
+    }
+
+    openBoard(o: BoardOptions): BoardHandle {
+        return openBoard(this, o);
     }
 
     // ---------- flow helpers ----------

@@ -1,3 +1,4 @@
+import type { BoardHandle, BoardOptions } from "./boardUi";
 import type { Beat, CaseData, CaseResult, Choice, Gauges, L } from "./types";
 import type { ChooseOptions } from "./ui";
 
@@ -6,6 +7,16 @@ export interface CaseCtx {
     talk(lines: readonly L[]): Promise<void>;
     choose(o: ChooseOptions): Promise<number[]>;
     notice(title: string, body: string, button?: string): Promise<void>;
+    openBoard(o: BoardOptions): BoardHandle;
+}
+
+/** One line under the board after Submit, e.g. "2 right, 1 wrong. 1 right card is still in the pile." */
+export function boardStatus(good: number, bad: number, missing: number): string {
+    const parts = [`${good} right`];
+    if (bad) parts.push(`${bad} wrong`);
+    let line = `${parts.join(", ")}.`;
+    if (missing) line += ` ${missing} right card${missing === 1 ? " is" : "s are"} still in the pile.`;
+    return line;
 }
 
 const cap = (n: number) => Math.max(0, Math.min(5, Math.round(n * 2) / 2));
@@ -98,42 +109,51 @@ export async function runCase(ctx: CaseCtx, c: CaseData): Promise<CaseResult> {
         ]);
     }
 
-    // 3. Build the board.
+    // 3. Build the board: drag cards into the framework, submit, and see each one turn green or red.
     await tutorial("board");
-    const criticals = c.board.buckets.filter((b) => b.critical).length;
-    let board: number[] = [];
+    const isCritical = (i: number) => c.board.buckets[i].critical;
+    const criticalIdx = c.board.buckets.flatMap((b, i) => (b.critical ? [i] : []));
+    const ui = ctx.openBoard({
+        title: c.board.title,
+        instruction: c.board.instruction,
+        cards: c.board.buckets.map((b) => b.text),
+        min: c.board.min,
+        max: c.board.max,
+        onHint,
+    });
     for (let attempt = 0; ; attempt++) {
-        board = await ctx.choose({
-            title: c.board.title,
-            prompt: c.board.instruction,
-            options: c.board.buckets.map((b) => b.text),
-            multi: { min: c.board.min, max: c.board.max },
-            onHint,
-        });
-        const got = board.filter((i) => c.board.buckets[i].critical).length;
-        const decoys = board.filter((i) => !c.board.buckets[i].critical);
-        if (attempt === 0) g.structure += Math.max(0, (4 * got) / criticals - decoys.length);
-        if (decoys.length === 0 && got === criticals) {
+        const board = await ui.submit();
+        const good = board.filter(isCritical);
+        const bad = board.filter((i) => !isCritical(i));
+        const missing = criticalIdx.length - good.length;
+        ui.mark(new Map(board.map((i) => [i, isCritical(i) ? "good" : "bad"] as const)));
+        if (attempt === 0) g.structure += Math.max(0, (4 * good.length) / criticalIdx.length - bad.length);
+        if (bad.length === 0 && missing === 0) {
             if (attempt > 0) fixes += 1;
+            ui.status("Every bucket is right.");
             await ctx.talk([["gus", "If we answered every bucket, could we answer the question? ...Yes. Lovely board."]]);
             break;
         }
         if (attempt === 0) mistakes += 1;
-        for (const i of decoys) {
+        ui.status(boardStatus(good.length, bad.length, missing));
+        for (const i of bad) {
             const coach = c.board.buckets[i].coach;
             if (coach) await ctx.talk(coach);
         }
-        if (got < criticals) {
+        if (missing > 0) {
             await ctx.talk([["gus", "If we answered every bucket, could we answer the question? Something's still missing."]]);
         }
         if (attempt >= 1) {
+            ui.show(criticalIdx);
+            ui.status("Here's the board to use.");
             await ctx.talk([["gus", "Here's the board I'd use. Study it, then we keep going."]]);
-            board = c.board.buckets.flatMap((b, i) => (b.critical ? [i] : []));
             break;
         }
-        await ctx.talk([["gus", "Fix it up and submit again."]]);
+        ui.unplace(bad);
+        ui.status(missing > 0 ? "Red cards went back to the pile. Find what's missing." : "Red cards went back to the pile.");
+        await ctx.talk([["gus", "Greens stay. Fix the rest and submit again."]]);
     }
-    await ctx.notice("Your board", board.map((i) => `•  ${c.board.buckets[i].text}`).join("\n"));
+    await ui.finish("Continue");
 
     // 4. Plant the flag: where to start, and the hypothesis.
     await tutorial("flag");

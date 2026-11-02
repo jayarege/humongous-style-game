@@ -26,7 +26,10 @@ const prologue: CaseData = {
             ["gus", "If you ever get stuck, click Hint. Your own brain helps, but it costs half a star."],
         ],
         lanterns: [["gus", "You get three Question Lanterns. Spend them on things your board can't answer by itself."]],
-        board: [["gus", "Now the board. Pick three or four buckets, and every bucket has to be a question."]],
+        board: [
+            ["gus", "Now the board. Drag three or four cards into your framework. Every bucket has to be a question."],
+            ["gus", "Hit Submit and the right ones light up green. Red ones go back to the pile, and you try again."],
+        ],
         flag: [["gus", "Plant your flag: where do you start, and what do you expect to find?"]],
         drive: [["gus", "Data's coming. Don't just read it. Tell me the so what."]],
         close: [["gus", "Close it out: answer first, then your reasons, the risk and a next step."]],
