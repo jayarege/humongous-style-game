@@ -192,6 +192,12 @@ describe("places", () => {
         }
     });
 
+    it("a data prop that opens Driver Detective is a real prop in that place", () => {
+        for (const p of Object.values(PLACES)) {
+            if (p.exhibitProp) expect(p.props.some((x) => x.id === p.exhibitProp), `${p.id}.exhibitProp ${p.exhibitProp}`).toBe(true);
+        }
+    });
+
     it("nine Framework Cards in all (the album holds nine)", () => {
         expect(Object.values(PLACES).filter((p) => p.card).length).toBe(9);
     });

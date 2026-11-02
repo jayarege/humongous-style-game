@@ -163,6 +163,7 @@ export const PLACES: Record<string, PlaceDef> = {
         host: { speaker: "tug", key: "char_tug_closed", x: 1070 },
         caseId: "runway_row",
         exhibit: { x: 640, y: 160 },
+        exhibitProp: "departure_board",
         props: [
             {
                 id: "windsock",
@@ -270,7 +271,8 @@ export const PLACES: Record<string, PlaceDef> = {
         gusX: 340,
         host: { speaker: "okafor", key: "char_okafor_closed", x: 1010 },
         caseId: "vault",
-        exhibit: { x: 1150, y: 200 },
+        exhibit: { x: 690, y: 330 },
+        exhibitProp: "spreadsheet",
         props: [
             {
                 id: "vault_door",
@@ -307,6 +309,7 @@ export const PLACES: Record<string, PlaceDef> = {
         host: { speaker: "moss", key: "char_moss_closed", x: 1040 },
         caseId: "abacus_heights",
         exhibit: { x: 600, y: 180 },
+        exhibitProp: "abacus",
         props: [
             {
                 id: "abacus",
@@ -343,6 +346,7 @@ export const PLACES: Record<string, PlaceDef> = {
         host: { speaker: "fizz", key: "char_fizz_closed", x: 1060 },
         caseId: "foundry",
         exhibit: { x: 640, y: 170 },
+        exhibitProp: "oee_gauge",
         props: [
             {
                 id: "scrap_bin",

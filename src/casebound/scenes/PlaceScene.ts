@@ -30,6 +30,9 @@ const HOST_NAMES: Record<string, string> = {
  * One scene class for every location. Started with `{ id }` from places.ts: draws the room, puts Wren, Gus and the
  * host in it, makes the props clickable, and runs that place's script.
  */
+/** Where each suspect card's scroll banner sits, as a share of the card's height. */
+const BANNER_CENTER: Record<string, number> = { Price: 0.846, Volume: 0.865, Mix: 0.822, Cost: 0.851 };
+
 export class PlaceScene extends Phaser.Scene implements CaseCtx {
     place!: PlaceDef;
     wren?: Img;
@@ -170,6 +173,15 @@ export class PlaceScene extends Phaser.Scene implements CaseCtx {
         this.run(async () => {
             const prop = this.place.props.find((x) => x.id === id);
             if (!prop) return;
+            // The district's data prop (a spreadsheet, a gauge) is where Exhibit A's mystery lives.
+            if (id === this.place.exhibitProp) {
+                if (this.exhibit) return this.detective();
+                if (!save().results[this.place.id] && !this.clicks.has(id)) {
+                    this.clicks.set(id, 0);
+                    await this.talk([["gus", "There's a mystery hiding in those numbers. Crack the case first, then click here again."]]);
+                    return;
+                }
+            }
             const n = this.clicks.get(id) ?? 0;
             this.clicks.set(id, n + 1);
             const line = prop.lines[Math.min(n, prop.lines.length - 1)];
@@ -277,8 +289,14 @@ export class PlaceScene extends Phaser.Scene implements CaseCtx {
                 const cx = x + 28 + i * (cw + gap) + cw / 2;
                 const img = this.add.image(cx, y, `ui_suspect_${n.toLowerCase()}`).setOrigin(0.5, 0);
                 img.setScale(cw / img.width);
+                // Centred on each card's painted scroll banner (measured from the art; they sit at slightly different heights).
                 const label = this.add
-                    .text(cx, y + img.displayHeight - 46, n.toUpperCase(), { fontFamily: FONT, fontSize: "20px", fontStyle: "bold", color: "#5a2a10" })
+                    .text(cx, y + img.displayHeight * BANNER_CENTER[n], n.toUpperCase(), {
+                        fontFamily: FONT,
+                        fontSize: "18px",
+                        fontStyle: "bold",
+                        color: "#5a2a10",
+                    })
                     .setOrigin(0.5, 0.5);
                 content.add([img, label]);
                 if (tried.has(n)) {

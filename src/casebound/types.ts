@@ -88,6 +88,8 @@ export interface PlaceDef {
     caseId?: string;
     /** Where Exhibit A appears after the case, for Driver Detective. */
     exhibit?: { x: number; y: number };
+    /** A data prop (spreadsheet, gauge) that also opens Driver Detective once the case is solved. */
+    exhibitProp?: string;
     /** Lines the host says when clicked after the case is solved. */
     doneLines?: L[];
 }
