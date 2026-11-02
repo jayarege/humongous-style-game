@@ -131,8 +131,21 @@ async function playthrough(browser, url) {
     await page.screenshot({ path: `${OUT}/auto-map.png` });
 
     const results = {};
+    // The first district is entered the way a player would: by clicking its building on the town map.
+    const first = content.districts[0];
+    const spot = await page.evaluate((id) => {
+        const hub = window.__game.scene.getScene("Hub");
+        const zone = hub.children.list.find((o) => o.type === "Zone" && o.input && o.width === 70 && o.getData?.("spot") === id);
+        const r = window.__game.canvas.getBoundingClientRect();
+        const k = r.width / 1280;
+        return zone ? { x: r.left + zone.x * k, y: r.top + zone.y * k } : null;
+    }, first);
+    if (!spot) throw new Error(`no map spot for ${first}`);
+    await page.mouse.click(spot.x, spot.y);
+    await waitFor(page, placeIdle, `enter ${first} from the map`, 60000, first);
+
     for (const id of content.districts) {
-        await page.evaluate((id) => window.__game.scene.start("Place", { id }), id);
+        if (id !== first) await page.evaluate((id) => window.__game.scene.start("Place", { id }), id);
         await waitFor(page, placeIdle, `enter ${id}`, 60000, id);
         await page.evaluate(() => {
             const s = window.__game.scene.getScene("Place");
