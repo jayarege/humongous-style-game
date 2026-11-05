@@ -60,3 +60,10 @@ included. Generate the frames once here and every build gets them.
 For a new build's backgrounds, use Midjourney with `--sref` pointing at one of this game's rooms (links in
 [midjourney-prompts.md](midjourney-prompts.md)), so the new places still match the characters standing in them.
 Backgrounds are 1280×720 and characters stand with their feet at y = 705.
+
+## Running it on GitHub instead of Codespaces
+
+The **Generate art** workflow (Actions tab → Generate art → Run workflow) does the same run on GitHub's servers and
+saves the new images to a branch named `art/run-<number>`, ready to review and merge. It needs the key saved once
+as an Actions secret: repo Settings → Secrets and variables → Actions → New repository secret, named
+`OPENAI_API_KEY`. Claude can start this workflow for you and review the results.
