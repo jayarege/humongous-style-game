@@ -14,7 +14,8 @@
         "e2e": "node e2e/playthrough.mjs",
         "ci": "npm test && npm run build && npm run check:size && npm run e2e",
         "art:placeholders": "python3 tools/make_placeholder_art.py",
-        "art:generate": "node tools/generate-assets.mjs"
+        "art:generate": "node tools/generate-assets.mjs",
+        "art:import": "node tools/import-art.mjs"
     },
     "dependencies": {
         "phaser": "3.90.0"

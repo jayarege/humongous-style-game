@@ -55,7 +55,7 @@ export function loadConfig(file = JOBS_FILE) {
     return cfg;
 }
 
-function loadManifest() {
+export function loadManifest() {
     try {
         return JSON.parse(fs.readFileSync(MANIFEST_FILE, "utf8"));
     } catch {
@@ -63,7 +63,7 @@ function loadManifest() {
     }
 }
 
-function saveManifest(manifest) {
+export function saveManifest(manifest) {
     const sorted = Object.fromEntries(Object.entries(manifest.jobs).sort(([a], [b]) => a.localeCompare(b)));
     fs.writeFileSync(MANIFEST_FILE, JSON.stringify({ jobs: sorted }, null, 2) + "\n");
 }
@@ -85,22 +85,25 @@ async function uploadable(source, name, toFile) {
 
 // ─── Image processing ───────────────────────────────────────────────────────
 
-/** Makes the magenta background transparent, with soft edges and the pink fringe removed. */
-export async function keyOutBackground(png) {
+/** Makes a flat background colour (magenta by default) transparent, with soft edges and the colour fringe removed. */
+export async function keyOutBackground(png, key = KEY) {
     const { data, info } = await sharp(png).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
     for (let i = 0; i < data.length; i += 4) {
         const r = data[i];
         const g = data[i + 1];
         const b = data[i + 2];
-        const dist = Math.hypot(r - KEY.r, g - KEY.g, b - KEY.b);
+        const dist = Math.hypot(r - key.r, g - key.g, b - key.b);
         if (dist < KEY_HARD) {
             data[i + 3] = 0;
         } else if (dist < KEY_SOFT) {
             const t = (dist - KEY_HARD) / (KEY_SOFT - KEY_HARD);
             data[i + 3] = Math.round(data[i + 3] * t);
-            const spill = Math.max(0, Math.min(r, b) - g);
-            data[i] = Math.max(0, r - spill);
-            data[i + 2] = Math.max(0, b - spill);
+            // Pull pink spill out of edge pixels when the background is any shade of magenta.
+            if (key.r > 170 && key.b > 170 && key.g < 100) {
+                const spill = Math.max(0, Math.min(r, b) - g);
+                data[i] = Math.max(0, r - spill);
+                data[i + 2] = Math.max(0, b - spill);
+            }
         }
     }
     return sharp(data, { raw: { width: info.width, height: info.height, channels: 4 } })
@@ -140,13 +143,16 @@ export function mouthCrop(box, imgW, imgH) {
 }
 
 /**
- * Blends the regenerated crop back into the original, but only inside a soft oval around the mouth.
+ * Blends the regenerated region back into the original, but only inside a soft oval around the mouth.
  * The original's transparency is kept, so the character's outline never changes.
+ * `region` is where the generated picture sits in the original: { left, top, size } for a square crop,
+ * or { left, top, width, height }.
  */
-export async function blendMouth(originalPng, generatedPng, box, crop) {
+export async function blendMouth(originalPng, generatedPng, box, region) {
+    const crop = { left: region.left, top: region.top, w: region.width ?? region.size, h: region.height ?? region.size };
     const orig = await sharp(originalPng).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
     const gen = await sharp(generatedPng)
-        .resize(crop.size, crop.size, { fit: "fill" })
+        .resize(crop.w, crop.h, { fit: "fill" })
         .ensureAlpha()
         .raw()
         .toBuffer();
@@ -157,14 +163,14 @@ export async function blendMouth(originalPng, generatedPng, box, crop) {
     const cy = (y0 + y1) / 2 + (y1 - y0) * 0.1; // open mouths grow downwards
     const rx = ((x1 - x0) / 2) * 1.3;
     const ry = ((y1 - y0) / 2) * 1.5;
-    for (let y = crop.top; y < crop.top + crop.size; y++) {
-        for (let x = crop.left; x < crop.left + crop.size; x++) {
+    for (let y = crop.top; y < crop.top + crop.h; y++) {
+        for (let x = crop.left; x < crop.left + crop.w; x++) {
             const d = Math.hypot((x - cx) / rx, (y - cy) / ry);
             if (d >= 1) continue;
             const t = clamp((1 - d) / 0.3, 0, 1); // feather the outer 30% of the oval
             const m = t * t * (3 - 2 * t);
             const oi = (y * W + x) * 4;
-            const gi = ((y - crop.top) * crop.size + (x - crop.left)) * 4;
+            const gi = ((y - crop.top) * crop.w + (x - crop.left)) * 4;
             for (let c = 0; c < 3; c++) out[oi + c] = Math.round(orig.data[oi + c] * (1 - m) + gen[gi + c] * m);
         }
     }
