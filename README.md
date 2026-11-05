@@ -60,9 +60,13 @@ src/
   dialogue/talk.ts       say() / conversation(): drives the text box and the mouth frames
 engine/                  the Caper engine (MIT). See engine/UPSTREAM.md before changing it.
 tools/make_placeholder_art.py   draws the placeholder art
+tools/generate-assets.mjs       makes props and talking frames with OpenAI's image API (docs/art-pipeline.md)
 ```
 
 ## Swapping in your art
+
+Casebound's props and talking frames can be generated in one command: see [docs/art-pipeline.md](docs/art-pipeline.md).
+Rooms and new characters come from Midjourney: see [docs/midjourney-prompts.md](docs/midjourney-prompts.md).
 
 1. **Backgrounds:** 1280x720 PNG. Save over `public/art/rooms/pond.png` (or add a new file and a line in
    `src/game/assets.ts`).

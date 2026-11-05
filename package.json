@@ -13,14 +13,17 @@
         "check:size": "node tools/check-dist.mjs",
         "e2e": "node e2e/playthrough.mjs",
         "ci": "npm test && npm run build && npm run check:size && npm run e2e",
-        "art:placeholders": "python3 tools/make_placeholder_art.py"
+        "art:placeholders": "python3 tools/make_placeholder_art.py",
+        "art:generate": "node tools/generate-assets.mjs"
     },
     "dependencies": {
         "phaser": "3.90.0"
     },
     "devDependencies": {
         "@types/node": "22.20.5",
+        "openai": "^7.52.0",
         "playwright": "1.63.0",
+        "sharp": "^0.35.5",
         "typescript": "6.0.3",
         "vite": "^8.0.8",
         "vitest": "^5.0.5"

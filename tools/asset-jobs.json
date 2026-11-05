@@ -1,0 +1,218 @@
+{
+  "model": "gpt-image-2",
+  "styleRefs": [
+    "public/art/props/mug_still.png",
+    "public/art/props/cabinet_still.png",
+    "public/art/props/vending_oracle_still.png",
+    "public/art/props/exhibit_a_still.png"
+  ],
+  "stylePrompt": "Match the art style of the reference images exactly. They are props from the same game: hand-painted 2D cartoon, 1990s children's adventure game style, bold clean black outlines, warm saturated colours, soft cel shading. Copy only their style, not their content, and give the new object no face.",
+  "mouthStylePrompt": "This is a close-up crop of a cartoon character from a 1990s-style adventure game. Redraw this exact image with the same framing, zoom and position, the same line weight, colours and art style. Keep the eyes, nose, face shape, hair and everything else exactly as they are.",
+  "jobs": [
+    {
+      "name": "props/desk_lamp_on",
+      "out": "public/art/props/desk_lamp_on.png",
+      "prompt": "A green-shaded brass banker's desk lamp, switched on, with warm yellow light glowing under the shade.",
+      "transparent": true,
+      "fit": { "width": 256, "height": 256, "padding": 8 }
+    },
+    {
+      "name": "props/desk_lamp_off",
+      "basedOn": "props/desk_lamp_on",
+      "out": "public/art/props/desk_lamp_off.png",
+      "prompt": "The lamp is switched off: no glow, the bulb and shade are dark.",
+      "transparent": true,
+      "fit": { "width": 256, "height": 256, "padding": 8 }
+    },
+    {
+      "name": "props/lettuce_wilted",
+      "out": "public/art/props/lettuce_wilted.png",
+      "prompt": "A sad wilted head of lettuce with droopy, limp leaves and a few brown edges.",
+      "transparent": true,
+      "fit": { "width": 256, "height": 256, "padding": 8 }
+    },
+    {
+      "name": "props/umbrella_stand",
+      "out": "public/art/props/umbrella_stand.png",
+      "prompt": "A tall brass umbrella stand crammed full of colourful closed umbrellas, plus one mop sneaking in among them.",
+      "transparent": true,
+      "fit": { "width": 256, "height": 256, "padding": 8 }
+    },
+    {
+      "name": "props/suitcase_closed",
+      "out": "public/art/props/suitcase_closed.png",
+      "prompt": "An overstuffed brown travel suitcase covered in travel stickers, bulging and straining at its latches, a sock poking out of one side.",
+      "transparent": true,
+      "fit": { "width": 256, "height": 256, "padding": 8 }
+    },
+    {
+      "name": "props/suitcase_open_robot",
+      "basedOn": "props/suitcase_closed",
+      "out": "public/art/props/suitcase_open_robot.png",
+      "prompt": "The suitcase has popped open, clothes spilling out, and a tiny friendly silver robot arm is waving out of it.",
+      "transparent": true,
+      "fit": { "width": 256, "height": 256, "padding": 8 }
+    },
+    {
+      "name": "props/customs_sign",
+      "out": "public/art/props/customs_sign.png",
+      "prompt": "A hanging wooden checkpoint sign on two chains that reads CUSTOMS in bold hand-painted letters.",
+      "transparent": true,
+      "fit": { "width": 256, "height": 256, "padding": 8 }
+    },
+    {
+      "name": "props/windsock",
+      "out": "public/art/props/windsock.png",
+      "prompt": "An orange and white striped airport windsock on a short metal pole, blowing out sideways in the wind.",
+      "transparent": true,
+      "fit": { "width": 256, "height": 256, "padding": 8 }
+    },
+    {
+      "name": "props/departure_board",
+      "out": "public/art/props/departure_board.png",
+      "prompt": "An old split-flap airport departures board on a stand: black panel, rows of yellow destination codes and times, a header that reads DEPARTURES.",
+      "transparent": true,
+      "fit": { "width": 256, "height": 256, "padding": 8 },
+      "quality": "high"
+    },
+    {
+      "name": "props/watering_can",
+      "out": "public/art/props/watering_can.png",
+      "prompt": "A dented green metal watering can with a long spout and a few water drops falling from the rose.",
+      "transparent": true,
+      "fit": { "width": 256, "height": 256, "padding": 8 }
+    },
+    {
+      "name": "props/ai_seed_packet",
+      "out": "public/art/props/ai_seed_packet.png",
+      "prompt": "A paper seed packet with a cheerful sprout illustration and the letters AI printed large on the front.",
+      "transparent": true,
+      "fit": { "width": 256, "height": 256, "padding": 8 }
+    },
+    {
+      "name": "props/gavel",
+      "out": "public/art/props/gavel.png",
+      "prompt": "A polished wooden auctioneer's gavel resting on its round sound block.",
+      "transparent": true,
+      "fit": { "width": 256, "height": 256, "padding": 8 }
+    },
+    {
+      "name": "props/chandelier",
+      "out": "public/art/props/chandelier.png",
+      "prompt": "An extravagant crystal chandelier with curly gold arms, lit candles and dangling sparkling crystals.",
+      "transparent": true,
+      "fit": { "width": 256, "height": 256, "padding": 8 }
+    },
+    {
+      "name": "props/vault_door_closed",
+      "out": "public/art/props/vault_door_closed.png",
+      "prompt": "A round steel bank vault door seen from the front, closed, with a big spoked wheel handle, rivets and heavy bolts.",
+      "transparent": true,
+      "fit": { "width": 256, "height": 256, "padding": 8 }
+    },
+    {
+      "name": "props/spreadsheet",
+      "out": "public/art/props/spreadsheet.png",
+      "prompt": "A ridiculously long printed spreadsheet unrolling off a clipboard like a scroll, a grid of tiny unreadable numbers, cascading down in loops.",
+      "transparent": true,
+      "fit": { "width": 256, "height": 256, "padding": 8 }
+    },
+    {
+      "name": "props/abacus",
+      "out": "public/art/props/abacus.png",
+      "prompt": "A sturdy wooden abacus with rows of red and blue beads on brass rods.",
+      "transparent": true,
+      "fit": { "width": 256, "height": 256, "padding": 8 }
+    },
+    {
+      "name": "props/single_bead",
+      "out": "public/art/props/single_bead.png",
+      "prompt": "A single shiny red abacus bead, a glossy wooden sphere with a hole through the middle, with a little sparkle of pride.",
+      "transparent": true,
+      "fit": { "width": 256, "height": 256, "padding": 24 }
+    },
+    {
+      "name": "props/scrap_bin",
+      "out": "public/art/props/scrap_bin.png",
+      "prompt": "A dented metal factory scrap bin on wheels, overflowing with bent bolts, broken gears and metal offcuts.",
+      "transparent": true,
+      "fit": { "width": 256, "height": 256, "padding": 8 }
+    },
+    {
+      "name": "props/oee_gauge_60",
+      "out": "public/art/props/oee_gauge_60.png",
+      "prompt": "A round industrial dial gauge with a brass rim and a red, yellow and green arc, the needle pointing to 60 percent, a small label that reads OEE.",
+      "transparent": true,
+      "fit": { "width": 256, "height": 256, "padding": 8 }
+    },
+    {
+      "name": "props/oee_gauge_70",
+      "basedOn": "props/oee_gauge_60",
+      "out": "public/art/props/oee_gauge_70.png",
+      "prompt": "The needle has moved up to point at 70 percent.",
+      "transparent": true,
+      "fit": { "width": 256, "height": 256, "padding": 8 }
+    },
+
+    {
+      "name": "mouth/wren",
+      "type": "mouth",
+      "character": "wren",
+      "source": "public/characters/wren/wren-closed.png",
+      "mouthBox": [228, 318, 300, 362],
+      "describe": "Wren, a sleepy but determined young consultant with a small closed smile",
+      "frames": [
+        { "out": "public/characters/wren/wren-half.png", "prompt": "the mouth is half open mid-word, as if talking, showing a little of the dark inside of the mouth" },
+        { "out": "public/characters/wren/wren-wide.png", "prompt": "the mouth is wide open, as if exclaiming, showing the dark inside of the mouth and the tongue" }
+      ]
+    },
+    {
+      "name": "mouth/gus",
+      "type": "mouth",
+      "character": "gus",
+      "source": "public/characters/gus/gus-closed.png",
+      "mouthBox": [115, 265, 365, 335],
+      "describe": "Gus, a flip-chart easel whose face is drawn in black marker on the paper, with a big curved smile line",
+      "frames": [
+        { "out": "public/characters/gus/gus-half.png", "prompt": "the marker-drawn mouth is half open mid-word, drawn in the same black marker style, with a little dark fill inside" },
+        { "out": "public/characters/gus/gus-wide.png", "prompt": "the marker-drawn mouth is wide open and excited, drawn in the same black marker style, with dark fill inside" }
+      ]
+    },
+    {
+      "name": "mouth/barnaby",
+      "type": "mouth",
+      "character": "barnaby",
+      "source": "public/characters/barnaby/barnaby-closed.png",
+      "mouthBox": [175, 258, 330, 320],
+      "describe": "Barnaby Bunch, a plump gloomy grocer with a flat frowning mouth; he stays gloomy",
+      "frames": [
+        { "out": "public/characters/barnaby/barnaby-half.png", "prompt": "the mouth is half open mid-word in a glum, droopy way, showing a little of the dark inside" },
+        { "out": "public/characters/barnaby/barnaby-wide.png", "prompt": "the mouth is open wide in a long gloomy groan, showing the dark inside of the mouth" }
+      ]
+    },
+    {
+      "name": "mouth/helga",
+      "type": "mouth",
+      "character": "helga",
+      "source": "public/characters/helga/helga-closed.png",
+      "mouthBox": [165, 265, 272, 305],
+      "describe": "Dr. Helga Sprocket, an energetic, confident engineer with a closed grin",
+      "frames": [
+        { "out": "public/characters/helga/helga-half.png", "prompt": "the mouth is half open mid-word, as if talking, showing a little of the teeth" },
+        { "out": "public/characters/helga/helga-wide.png", "prompt": "the mouth is wide open in an excited grin, showing teeth and the dark inside of the mouth" }
+      ]
+    },
+    {
+      "name": "mouth/duke",
+      "type": "mouth",
+      "character": "duke",
+      "source": "public/characters/duke/duke-closed.png",
+      "mouthBox": [135, 282, 270, 335],
+      "describe": "Duke Mergeworth, a pompous portly collector with a smug closed smile",
+      "frames": [
+        { "out": "public/characters/duke/duke-half.png", "prompt": "the mouth is half open mid-word in a smug way, as if talking, showing a little of the dark inside" },
+        { "out": "public/characters/duke/duke-wide.png", "prompt": "the mouth is wide open in a proud boast, showing the dark inside of the mouth and the tongue" }
+      ]
+    }
+  ]
+}
