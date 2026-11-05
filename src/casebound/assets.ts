@@ -2,6 +2,8 @@
  * Every image Casebound loads, by texture key. Paths are relative so the build works on GitHub Pages.
  * To swap art, replace the file at the same path.
  */
+import { GENERATED_MOUTH_FRAMES } from "./mouthFrames.generated";
+
 const ROOMS = [
     "office_desk",
     "sticky_note_landing",
@@ -19,10 +21,13 @@ const ROOMS = [
     "island_map",
 ];
 
-/** Characters with closed / half / wide mouth frames. */
-const THREE_FRAME = ["fizz", "moss", "okafor", "quill", "tug"];
-/** Characters with only a closed frame so far (they bob while talking). */
-const ONE_FRAME = ["wren", "gus", "barnaby", "helga", "duke"];
+/** Characters drawn with closed / half / wide mouth frames. */
+const DRAWN_THREE_FRAME = ["fizz", "moss", "okafor", "quill", "tug"];
+/** Characters that start with only a closed frame. They bob while talking until tools/generate-assets.mjs makes their frames. */
+const CLOSED_ONLY = ["wren", "gus", "barnaby", "helga", "duke"];
+
+const THREE_FRAME = [...DRAWN_THREE_FRAME, ...CLOSED_ONLY.filter((c) => GENERATED_MOUTH_FRAMES.includes(c))];
+const ONE_FRAME = CLOSED_ONLY.filter((c) => !GENERATED_MOUTH_FRAMES.includes(c));
 
 const PROPS = [
     "abacus",

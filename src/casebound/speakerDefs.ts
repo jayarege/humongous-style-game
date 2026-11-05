@@ -1,5 +1,6 @@
 import type { SpeakerDef } from "../dialogue/talk";
 import { PLACES } from "./content/places";
+import { GENERATED_MOUTH_FRAMES } from "./mouthFrames.generated";
 
 function three(c: string): SpeakerDef["mouths"] {
     return { closed: `char_${c}_closed`, half: `char_${c}_half`, open: `char_${c}_wide` };
@@ -34,6 +35,13 @@ export function caseboundSpeakerDefs(): Record<string, SpeakerDef> {
         auctioneer: { name: "Auctioneer", color: "#ffd23f" },
         narrator: { name: "", color: "#ffffff" },
     };
+    // Characters whose talking frames were generated lip-flap instead of bobbing.
+    for (const c of GENERATED_MOUTH_FRAMES) {
+        const def = defs[c];
+        if (!def) continue;
+        def.mouths = three(c);
+        delete def.bob;
+    }
     // Every clickable prop can talk under its own name.
     for (const place of Object.values(PLACES)) {
         for (const p of place.props) {

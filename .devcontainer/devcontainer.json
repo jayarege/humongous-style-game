@@ -8,6 +8,12 @@
     "postAttachCommand": {
         "dev-server": "npm run dev"
     },
+    "secrets": {
+        "OPENAI_API_KEY": {
+            "description": "Only needed for `npm run art:generate`, which makes game art with OpenAI's image API. Leave blank otherwise.",
+            "documentationUrl": "https://platform.openai.com/api-keys"
+        }
+    },
     "forwardPorts": [5173],
     "portsAttributes": {
         "5173": { "label": "Game", "onAutoForward": "openPreview" }

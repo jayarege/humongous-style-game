@@ -1,0 +1,83 @@
+name: Generate art
+
+# Runs tools/generate-assets.mjs on GitHub's servers and saves the new art to a branch named art/run-<number>,
+# ready to review and merge. Start it from the Actions tab ("Run workflow"), or let Claude start it.
+#
+# One-time setup: repo Settings -> Secrets and variables -> Actions -> New repository secret,
+# name OPENAI_API_KEY, value your OpenAI API key.
+
+on:
+    workflow_dispatch:
+        inputs:
+            only:
+                description: "Only jobs whose name contains this (leave blank for everything not done yet)"
+                required: false
+                default: ""
+            force:
+                description: "Redo jobs that are already done"
+                type: boolean
+                default: false
+
+permissions:
+    contents: write
+
+concurrency:
+    group: generate-art
+    cancel-in-progress: false
+
+jobs:
+    generate:
+        name: Generate art
+        runs-on: ubuntu-latest
+        timeout-minutes: 60
+        steps:
+            - uses: actions/checkout@v7
+            - uses: actions/setup-node@v7
+              with:
+                  node-version-file: .nvmrc
+                  cache: npm
+            - run: npm ci
+
+            - name: Generate
+              id: generate
+              env:
+                  OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+                  ONLY: ${{ inputs.only }}
+                  FORCE: ${{ inputs.force }}
+              run: |
+                  if [ -z "$OPENAI_API_KEY" ]; then
+                    msg="No OPENAI_API_KEY secret. Add it under Settings -> Secrets and variables -> Actions."
+                    echo "::error::$msg"
+                    printf '### Not run\n\n%s\n' "$msg" >> "$GITHUB_STEP_SUMMARY"
+                    exit 1
+                  fi
+                  args=()
+                  if [ -n "$ONLY" ]; then args+=(--only "$ONLY"); fi
+                  if [ "$FORCE" = "true" ]; then args+=(--force); fi
+                  set +e
+                  npm run art:generate -- "${args[@]}" 2>&1 | tee generate.log
+                  status=${PIPESTATUS[0]}
+                  set -e
+                  echo "status=$status" >> "$GITHUB_OUTPUT"
+                  { echo '### Generator output'; echo '```'; tail -n 60 generate.log; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+
+            # Saves whatever was made, even if some jobs failed, so nothing paid for is lost.
+            - name: Save new art to a branch
+              if: always() && steps.generate.outputs.status != ''
+              run: |
+                  git config user.name "github-actions[bot]"
+                  git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+                  git add -A public src/casebound/mouthFrames.generated.ts tools/.asset-manifest.json
+                  if git diff --cached --quiet; then
+                    echo "No new art." >> "$GITHUB_STEP_SUMMARY"
+                    exit 0
+                  fi
+                  branch="art/run-${GITHUB_RUN_NUMBER}"
+                  git checkout -b "$branch"
+                  git commit -m "Generated art (run ${GITHUB_RUN_NUMBER})"
+                  git push origin "$branch"
+                  printf '\n### New art saved to `%s`\n' "$branch" >> "$GITHUB_STEP_SUMMARY"
+
+            - name: Fail if any job failed
+              if: steps.generate.outputs.status != '' && steps.generate.outputs.status != '0'
+              run: exit 1
