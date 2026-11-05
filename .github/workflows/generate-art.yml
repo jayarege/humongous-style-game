@@ -1,12 +1,15 @@
 name: Generate art
 
 # Runs tools/generate-assets.mjs on GitHub's servers and saves the new art to a branch named art/run-<number>,
-# ready to review and merge. Start it from the Actions tab ("Run workflow"), or let Claude start it.
+# ready to review and merge. Start it from the Actions tab ("Run workflow"), or by pushing a branch named
+# art/request/<anything> (that's how Claude starts it). A pushed request runs every job that isn't done yet.
 #
 # One-time setup: repo Settings -> Secrets and variables -> Actions -> New repository secret,
 # name OPENAI_API_KEY, value your OpenAI API key.
 
 on:
+    push:
+        branches: ["art/request/**"]
     workflow_dispatch:
         inputs:
             only:
