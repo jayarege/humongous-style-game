@@ -144,3 +144,63 @@ Save as `lantern_lit.png`, `lantern_out.png`, `hypothesis_flag.png` and `bucket_
 - If a result shows text or letters, add `--no text, letters, words` to the end.
 - If a character comes out in a different art style than your existing cast, raise the style reference strength with `--sw 200`.
 - If you get a character you love, save it as a reference image. Reusing it keeps their look the same if you ever need extra poses.
+
+## 6. Props that replace the placeholders
+
+These replace the flat code-drawn props in the rooms. Each prompt makes 4 jobs, so it works on every plan. Pick the best of each grid and download it. **Don't cut out the background**: keep the magenta, and Claude (or `npm run art:import`) removes it and sizes the prop.
+
+**Margin Market and Border Docks**
+
+```
+{a sad wilted head of lettuce with droopy limp leaves, a tall brass umbrella stand crammed with colorful closed umbrellas, an overstuffed brown travel suitcase covered in travel stickers straining at its latches, a dented green metal watering can with a long spout}, single object, hand-painted 2D cartoon prop, 1990s children's adventure game style, bold clean outlines, warm saturated colors, plain solid flat magenta background, no shadow, no text --ar 1:1 --sref https://raw.githubusercontent.com/jayarege/humongous-style-game/main/docs/references/margin_market.jpg
+```
+
+**Runway Row, Auction Hall and the Vault**
+
+```
+{an orange and white striped airport windsock on a short pole blowing sideways, a polished wooden auctioneer's gavel resting on its round sound block, an extravagant crystal chandelier with curly gold arms and lit candles, a round steel bank vault door with a big spoked wheel handle}, single object, hand-painted 2D cartoon prop, 1990s children's adventure game style, bold clean outlines, warm saturated colors, plain solid flat magenta background, no shadow, no text --ar 1:1 --sref https://raw.githubusercontent.com/jayarege/humongous-style-game/main/docs/references/margin_market.jpg
+```
+
+**The office, Abacus Heights and the Foundry**
+
+```
+{a green-shaded brass banker's desk lamp switched on and glowing warmly, a sturdy wooden abacus with red and blue beads, a single shiny red abacus bead, a dented metal factory scrap bin overflowing with bent bolts and broken gears}, single object, hand-painted 2D cartoon prop, 1990s children's adventure game style, bold clean outlines, warm saturated colors, plain solid flat magenta background, no shadow, no text --ar 1:1 --sref https://raw.githubusercontent.com/jayarege/humongous-style-game/main/docs/references/margin_market.jpg
+```
+
+**Props with words on them**
+
+```
+{a hanging wooden sign on two chains that reads "CUSTOMS", an old split-flap airport board on a stand with a header that reads "DEPARTURES" and rows of yellow letters, a paper seed packet with a sprout drawing and big letters "AI" on the front, a round industrial dial gauge with a red yellow and green arc and the needle pointing at 60 percent and a small label that reads "OEE"}, single object, hand-painted 2D cartoon prop, 1990s children's adventure game style, bold clean outlines, warm saturated colors, plain solid flat magenta background, no shadow --ar 1:1 --sref https://raw.githubusercontent.com/jayarege/humongous-style-game/main/docs/references/margin_market.jpg
+```
+
+**The spreadsheet**
+
+```
+a ridiculously long printed spreadsheet unrolling off a clipboard in loops, a grid of tiny unreadable numbers, single object, hand-painted 2D cartoon prop, 1990s children's adventure game style, bold clean outlines, warm saturated colors, plain solid flat magenta background, no shadow, no text --ar 1:1 --sref https://raw.githubusercontent.com/jayarege/humongous-style-game/main/docs/references/margin_market.jpg
+```
+
+**Second states (in the Editor).** Open your chosen image in the Editor, erase only the part that changes, and use the prompt:
+
+| Start from | Erase | Editor prompt |
+| --- | --- | --- |
+| Desk lamp | the bulb and the glow | the same desk lamp switched off and dark, no glow |
+| Suitcase | the lid and the top half | the suitcase has popped open with clothes spilling out and a tiny silver robot arm waving |
+| OEE gauge | the needle | the needle pointing at 70 percent |
+
+## 7. Talking frames for Wren, Gus, Barnaby, Helga and Duke
+
+For each character, open their closed-mouth picture in the Editor (save it from the link in the table at the top, or from `public/characters/<name>/<name>-closed.png`). Erase **only the mouth**, then run:
+
+- `mouth half open, mid-word`
+- `mouth wide open, excited`
+
+Download both. You don't need to cut out the background or match the size: the import scales them back and blends in only the mouth, so the rest of the character can't shift. That's 10 Editor runs in total.
+
+## Getting the downloads into the game
+
+Drop the downloaded images into the chat with Claude and say which is which (or just drop them, and Claude will tell them apart). If you're working in Codespaces yourself instead:
+
+```
+npm run art:import -- props/gavel gavel.png mouth/wren:half wren-half.png
+npm run art:import -- --list
+```
